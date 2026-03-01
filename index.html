@@ -240,7 +240,7 @@
         gap: 10px;
         width: 100%;
         padding: 53px 0;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
       }
       .s2-title-icon-wrap {
         width: 135px;
@@ -568,7 +568,9 @@
             <article class="s2-card" id="s2Card">
               <h3 id="s2CardTitle">⟡ Claude Code · Gemini CLI · Codex CLI 101</h3>
               <p id="s2CardDesc">专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。</p>
-              <img class="s2-card-media" id="s2CardImage" src="https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354" alt="课程卡片预览" />
+              <video class="s2-card-media" id="s2CardVideo" autoplay muted loop playsinline preload="none">
+                <source id="s2CardVideoSource" src="assets/videos/course-101.mp4" type="video/mp4" />
+              </video>
             </article>
           </div>
         </div>
@@ -623,7 +625,7 @@
           ],
           cardTitle: '⟡ Claude Code · Gemini CLI · Codex CLI 101',
           cardDesc: '专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。',
-          cardImage: 'https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354',
+          cardVideo: 'assets/videos/course-101.mp4',
           cardBg: '#dc6154'
         },
         product: {
@@ -641,7 +643,7 @@
           ],
           cardTitle: '⟡ AI 应用炼金术：从想法到上架',
           cardDesc: '从创意落地到商业变现，通过真实项目掌握把想法转化为产品的完整技能路径。',
-          cardImage: 'https://framerusercontent.com/images/WDfkeP5cGnLLYmHeqtIDWXdQwAM.png?width=1338&height=229',
+          cardVideo: 'assets/videos/course-101.mp4',
           cardBg: '#c95d4d'
         },
         content: {
@@ -659,7 +661,7 @@
           ],
           cardTitle: '⟡ AI 内容创作工作流',
           cardDesc: '系统化掌握从灵感到成片的创作流程，用 AI 提升产出速度和质量。',
-          cardImage: 'https://framerusercontent.com/images/781iBRCgCOwLpgdNsWmxnNgW44.png?width=1342&height=356',
+          cardVideo: 'assets/videos/course-101.mp4',
           cardBg: '#d16858'
         },
         automation: {
@@ -677,7 +679,7 @@
           ],
           cardTitle: '⟡ 自动化/AI 实战路径',
           cardDesc: '学习如何整合模型与工具，把零散动作串联成稳定、可持续的高价值流程。',
-          cardImage: 'https://framerusercontent.com/images/TEIzgMVajIwR5EjD2tv5bfSkY7Q.png?width=1338&height=286',
+          cardVideo: 'assets/videos/course-101.mp4',
           cardBg: '#c55a4d'
         }
       };
@@ -692,7 +694,8 @@
       const s2Card = document.getElementById('s2Card');
       const s2CardTitle = document.getElementById('s2CardTitle');
       const s2CardDesc = document.getElementById('s2CardDesc');
-      const s2CardImage = document.getElementById('s2CardImage');
+      const s2CardVideo = document.getElementById('s2CardVideo');
+      const s2CardVideoSource = document.getElementById('s2CardVideoSource');
 
       function renderS2(tab) {
         const d = s2Data[tab];
@@ -708,7 +711,10 @@
 
         s2CardTitle.textContent = d.cardTitle;
         s2CardDesc.textContent = d.cardDesc;
-        s2CardImage.src = d.cardImage;
+        s2CardVideoSource.src = d.cardVideo;
+        s2CardVideo.load();
+        const p = s2CardVideo.play();
+        if (p && p.catch) p.catch(() => {});
         s2Card.style.background = d.cardBg;
 
         s2Tabbar.querySelectorAll('.s2-tab').forEach((btn) => {
