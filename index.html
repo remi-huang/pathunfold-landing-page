@@ -1112,45 +1112,51 @@
         border: 1px solid #000;
         border-radius: 8px;
         background: #fff;
-        padding: 30px 28px;
+        padding: 24px 28px 22px;
         position: relative;
         overflow: hidden;
+        min-height: 170px;
       }
       .s8-collab-title {
-        margin: 0 0 12px;
-        text-align: center;
+        margin: 0 0 8px;
+        text-align: left;
         font-size: 20px;
         line-height: 1.6;
-        font-weight: 700;
+        font-weight: 500;
       }
       .s8-collab-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px 24px;
-        margin-bottom: 20px;
+        width: calc(100% - 170px);
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, max-content));
+        grid-auto-rows: minmax(24px, auto);
+        column-gap: 22px;
+        row-gap: 2px;
+        justify-content: start;
+        margin-bottom: 14px;
       }
       .s8-collab-item {
         font-size: 14px;
         line-height: 1.6;
         color: #333;
+        white-space: nowrap;
       }
-      .s8-collab-actions { display: flex; justify-content: center; }
+      .s8-collab-actions { display: flex; justify-content: flex-start; }
       .s8-collab-btn {
         border: 1px solid #b37919;
         background: #fff;
         color: #5c5c5c;
         border-radius: 5px;
-        min-width: 120px;
-        height: 34px;
+        min-width: 92px;
+        height: 30px;
+        padding: 0 12px;
         font-size: 12px;
         font-weight: 700;
         cursor: pointer;
       }
       .s8-collab-gif {
         position: absolute;
-        right: 18px;
-        bottom: 6px;
+        right: 14px;
+        bottom: -6px;
         width: 145px;
         height: 145px;
         object-fit: cover;
@@ -1165,6 +1171,7 @@
         .s7-sidebar { display: none; }
         #section-8-team { padding-left: 20px; padding-right: 20px; }
         .s8-collab-gif { display: none; }
+        .s8-collab-list { width: 100%; grid-template-columns: repeat(2, minmax(0, max-content)); }
       }
 
       @media (max-width: 900px) {
