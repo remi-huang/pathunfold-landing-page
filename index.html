@@ -70,6 +70,14 @@
         place-items: center;
         font-size: 12px;
         font-weight: 700;
+        transform: translateY(0);
+        transition: transform .14s ease, filter .14s ease;
+      }
+      .btn-wrap:hover .btn-top {
+        transform: translateY(2px);
+      }
+      .btn-wrap:active .btn-top {
+        transform: translateY(4px);
       }
 
       .avatar {
