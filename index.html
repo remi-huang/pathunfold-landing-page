@@ -676,6 +676,69 @@
       .map-tooltip-country { font-size: 10px; font-weight: 900; color: #ed9b2c; letter-spacing: .1em; }
       .map-tooltip-city { font-size: 13px; font-weight: 800; color: #111827; margin-top: 4px; }
 
+      .s4-overlay {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 1000px;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        padding: 0 40px;
+        pointer-events: none;
+      }
+      .s4-overlay * { pointer-events: auto; }
+      .s4-pie-wrap {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        flex: none;
+      }
+      .s4-pie-wrap svg { width: 100%; height: 100%; isolation: isolate; }
+      .s4-legend-wrap {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        color: #000;
+      }
+      .s4-legend-header {
+        font-size: 24px;
+        font-weight: 900;
+        margin-bottom: 20px;
+        color: #000;
+        font-family: "Utara Variable", Inter, sans-serif;
+        line-height: 1.2;
+        white-space: nowrap;
+        width: fit-content;
+      }
+      .s4-legend-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .s4-legend-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        cursor: pointer;
+        transition: opacity .2s ease, transform .2s ease, font-weight .2s ease;
+        font-size: 16px;
+      }
+      .s4-legend-label { white-space: nowrap; }
+      .s4-legend-dash {
+        flex: 1;
+        height: 1px;
+        margin: 0 10px;
+        border-bottom: 1.5px dashed #000;
+        opacity: .5;
+        align-self: flex-end;
+        margin-bottom: 6px;
+      }
+      .s4-legend-value { min-width: 60px; text-align: right; }
+
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
         .hero-row { flex-direction: column; }
@@ -704,6 +767,12 @@
 
         #section-4-world-map { padding: 14px 14px 36px; }
         .s4-map { height: 380px; }
+        .s4-overlay {
+          left: 6px;
+          bottom: 6px;
+          transform: scale(.58);
+          transform-origin: left bottom;
+        }
       }
     </style>
   </head>
@@ -908,6 +977,14 @@
         <div class="s4-map" id="s4Map">
           <svg id="s4MapSvg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="community world map"></svg>
           <div class="map-tooltip" id="s4Tooltip" style="display:none;"></div>
+
+          <div class="s4-overlay" id="s4Overlay">
+            <div class="s4-pie-wrap"><svg id="s4PieSvg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"></svg></div>
+            <div class="s4-legend-wrap">
+              <div class="s4-legend-header">分布于世界各地260+城市的1800+成员来自于</div>
+              <div class="s4-legend-list" id="s4LegendList"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1145,12 +1222,38 @@
 
       const s4MapSvg = document.getElementById('s4MapSvg');
       const s4Tooltip = document.getElementById('s4Tooltip');
+      const s4PieSvg = document.getElementById('s4PieSvg');
+      const s4LegendList = document.getElementById('s4LegendList');
+
+      const PIE_DATA = [
+        { id: 'industry', label: '传统行业', value: 60.1, patternId: 'hatch-dense' },
+        { id: 'coding', label: '程序员', value: 7.3, patternId: 'hatch-cross' },
+        { id: 'finance', label: '金融', value: 9.1, patternId: 'dots' },
+        { id: 'creative', label: '创意/设计', value: 6.9, patternId: 'hatch-sparse' },
+        { id: 'student', label: '学生', value: 7.1, patternId: 'stipple' },
+        { id: 'other', label: '其他', value: 9.5, patternId: 'solid-textured' }
+      ];
 
       function project(lat, lng) {
         return {
           x: (lng + 180) * (1000 / 360),
           y: (90 - lat) * (500 / 180)
         };
+      }
+
+      function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+        const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180;
+        return {
+          x: centerX + radius * Math.cos(angleInRadians),
+          y: centerY + radius * Math.sin(angleInRadians)
+        };
+      }
+
+      function describeArc(x, y, radius, startAngle, endAngle) {
+        const start = polarToCartesian(x, y, radius, endAngle);
+        const end = polarToCartesian(x, y, radius, startAngle);
+        const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+        return ['M', x, y, 'L', start.x, start.y, 'A', radius, radius, 0, largeArcFlag, 0, end.x, end.y, 'Z'].join(' ');
       }
 
       function renderMap() {
@@ -1206,7 +1309,93 @@
         });
       }
 
+      function renderPie() {
+        const sorted = PIE_DATA.filter(i => i.id !== 'other').sort((a,b)=>b.value-a.value);
+        const other = PIE_DATA.find(i => i.id === 'other');
+        if (other) sorted.push(other);
+        const total = sorted.reduce((acc, i) => acc + i.value, 0);
+
+        let currentAngle = 0;
+        const slices = sorted.map((item) => {
+          const sliceAngle = (item.value / total) * 360;
+          const startAngle = currentAngle;
+          const endAngle = currentAngle + sliceAngle;
+          const midAngle = startAngle + sliceAngle / 2;
+          currentAngle += sliceAngle;
+          return { ...item, startAngle, endAngle, midAngle };
+        });
+
+        s4PieSvg.innerHTML = `
+          <defs>
+            <filter id="sketchy-filter" x="-20%" y="-20%" width="140%" height="140%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise"></feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+            </filter>
+            <pattern id="hatch-dense" patternUnits="userSpaceOnUse" width="4" height="4"><path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" stroke="#000" stroke-width="0.5"></path></pattern>
+            <pattern id="hatch-cross" patternUnits="userSpaceOnUse" width="6" height="6"><path d="M-1,1 l2,-2 M0,6 l6,-6 M5,7 l2,-2" stroke="#000" stroke-width="0.8"></path><path d="M-1,5 l2,2 M0,0 l6,6 M5,-1 l2,2" stroke="#000" stroke-width="0.8"></path></pattern>
+            <pattern id="dots" patternUnits="userSpaceOnUse" width="8" height="8"><circle cx="2" cy="2" r="1" fill="#000"></circle><circle cx="6" cy="6" r="0.8" fill="#000"></circle></pattern>
+            <pattern id="hatch-sparse" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2" stroke="#000" stroke-width="0.5"></path></pattern>
+            <pattern id="stipple" patternUnits="userSpaceOnUse" width="12" height="12"><path d="M2,2 L2.1,2.1 M6,4 L6.1,4.1 M10,2 L10.1,2.1 M4,8 L4.1,8.1 M8,10 L8.1,10.1 M1,11 L1.1,11.1" stroke="#000" stroke-width="1.5" stroke-linecap="round"></path></pattern>
+            <pattern id="solid-textured" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="transparent"></rect><circle cx="20" cy="30" r="0.5" fill="#000" opacity="0.3"></circle><circle cx="70" cy="80" r="0.5" fill="#000" opacity="0.3"></circle></pattern>
+          </defs>
+          <g id="s4PieGroup" transform="translate(200,200)" style="filter:url(#sketchy-filter)"></g>
+        `;
+
+        const pieGroup = document.getElementById('s4PieGroup');
+        const paths = [];
+
+        slices.forEach((slice) => {
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', describeArc(0, 0, 144, slice.startAngle, slice.endAngle));
+          path.setAttribute('fill', slice.id === 'other' ? 'transparent' : `url(#${slice.patternId})`);
+          path.setAttribute('stroke', '#000');
+          path.setAttribute('stroke-width', '1.5');
+          path.style.cursor = 'pointer';
+          pieGroup.appendChild(path);
+          paths.push({ id: slice.id, midAngle: slice.midAngle, el: path });
+        });
+
+        s4LegendList.innerHTML = slices.map((s) => `
+          <div class="s4-legend-item" data-id="${s.id}">
+            <span class="s4-legend-label">${s.label}</span>
+            <div class="s4-legend-dash"></div>
+            <span class="s4-legend-value">${s.value}%</span>
+          </div>
+        `).join('');
+
+        function setHover(id) {
+          paths.forEach((p) => {
+            const active = id === p.id;
+            const dimmed = id && id !== p.id;
+            const rad = ((p.midAngle - 90) * Math.PI) / 180;
+            const x = active ? Math.cos(rad) * 15 : 0;
+            const y = active ? Math.sin(rad) * 15 : 0;
+            p.el.style.transform = `translate(${x}px, ${y}px) scale(${active ? 1.02 : 1})`;
+            p.el.style.opacity = dimmed ? '0.4' : '1';
+            p.el.style.transition = 'transform .2s ease, opacity .2s ease';
+          });
+
+          s4LegendList.querySelectorAll('.s4-legend-item').forEach((el) => {
+            const active = el.dataset.id === id;
+            const dimmed = id && el.dataset.id !== id;
+            el.style.transform = active ? 'scale(1.15)' : 'scale(1)';
+            el.style.fontWeight = active ? '700' : '400';
+            el.style.opacity = dimmed ? '0.4' : '1';
+          });
+        }
+
+        paths.forEach((p) => {
+          p.el.addEventListener('mouseenter', () => setHover(p.id));
+          p.el.addEventListener('mouseleave', () => setHover(null));
+        });
+        s4LegendList.querySelectorAll('.s4-legend-item').forEach((el) => {
+          el.addEventListener('mouseenter', () => setHover(el.dataset.id));
+          el.addEventListener('mouseleave', () => setHover(null));
+        });
+      }
+
       renderMap();
+      renderPie();
     </script>
   </body>
 </html>
