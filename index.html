@@ -269,31 +269,32 @@
       }
       .s2-tabbar {
         border: 1px solid #b7b8b4;
-        background: #e9e9e5;
+        background: #ecece8;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 0;
-        padding: 4px;
+        padding: 8px 10px;
         margin-bottom: 10px;
       }
       .s2-tab {
         appearance: none;
-        border: 1px solid #b7b8b4;
-        background: #efefeb;
-        border-radius: 3px;
+        border: 1px solid transparent;
+        background: transparent;
+        border-radius: 5px;
         text-align: center;
         font-size: 13px;
-        padding: 6px 10px;
+        line-height: 1.3;
+        padding: 10px;
         cursor: pointer;
-        transition: background-color .15s ease;
+        transition: background-color .15s ease, border-color .15s ease;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
       }
       .s2-tab-icon {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
         display: inline-block;
       }
       .s2-tab-icon img {
@@ -303,7 +304,8 @@
       }
       .s2-tab:hover { background: #f2f2ef; }
       .s2-tab.is-active {
-        background: #f6f6f3;
+        border-color: #919191;
+        background: #fdfefa;
         font-weight: 600;
       }
       .s2-content {
@@ -492,7 +494,7 @@
       <div class="s2-wrap">
         <div class="s2-title-row">
           <div class="s2-title-icon-wrap">
-            <img class="s2-title-icon" src="https://framerusercontent.com/images/ULjFgAHCO6j0yCOyNeaz8ZBytbM.gif?width=300&height=300" alt="路径图标" />
+            <img class="s2-title-icon" src="assets/icons/title-path.gif" alt="路径图标" />
           </div>
           <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
         </div>
