@@ -1172,6 +1172,13 @@
         font-weight: 700;
         cursor: pointer;
         box-shadow: 0 6px 0 #c6841d;
+        transform: translateY(0);
+        transition: transform .12s ease, box-shadow .12s ease;
+      }
+      .s8-collab-btn:hover,
+      .s8-collab-btn:active {
+        transform: translateY(2px);
+        box-shadow: 0 4px 0 #c6841d;
       }
 
       @media (max-width: 1200px) {
