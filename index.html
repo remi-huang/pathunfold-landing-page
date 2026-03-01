@@ -912,6 +912,7 @@
       </div>
     </section>
 
+    <script src="assets/data/world-map-data.js"></script>
     <script>
       const toggleBtn = document.getElementById('toggleBtn');
       const switchImg = document.getElementById('switchImg');
@@ -1138,60 +1139,9 @@
       });
 
       // SECTION 4：世界地图（按 Framer DottedWorldMap 逻辑复原）
-      const MAP_LOCATIONS = [
-        { city: 'Taiwan', country: 'Taiwan', lat: 22.34, lng: 120.37 },
-        { city: 'Hong Kong', country: 'Hong Kong', lat: 22.25, lng: 114.19 },
-        { city: 'New Taipei City', country: 'Taiwan', lat: 25.03, lng: 121.42 },
-        { city: 'Taipei', country: 'Taiwan', lat: 25.04, lng: 121.56 },
-        { city: 'Taichung', country: 'Taiwan', lat: 24.16, lng: 120.65 },
-        { city: 'Kaohsiung', country: 'Taiwan', lat: 22.62, lng: 120.31 },
-        { city: 'Taoyuan', country: 'Taiwan', lat: 24.99, lng: 121.3 },
-        { city: 'Melbourne', country: 'Australia', lat: -37.88, lng: 145.16 },
-        { city: 'Sydney', country: 'Australia', lat: -33.82, lng: 151.17 },
-        { city: 'Hsinchu', country: 'Taiwan', lat: 24.81, lng: 120.97 },
-        { city: 'Singapore', country: 'Singapore', lat: 1.36, lng: 103.82 },
-        { city: 'London', country: 'UK', lat: 51.51, lng: -0.13 },
-        { city: 'San Jose', country: 'USA', lat: 37.34, lng: -121.89 },
-        { city: 'Fremont', country: 'USA', lat: 37.55, lng: -121.99 },
-        { city: 'Tokyo', country: 'Japan', lat: 35.68, lng: 139.76 },
-        { city: 'Tainan', country: 'Taiwan', lat: 22.99, lng: 120.18 },
-        { city: 'Jersey City', country: 'USA', lat: 40.72, lng: -74.05 },
-        { city: 'Portland', country: 'USA', lat: 45.52, lng: -122.67 },
-        { city: 'Santa Clara', country: 'USA', lat: 37.35, lng: -121.96 },
-        { city: 'Toronto', country: 'Canada', lat: 43.65, lng: -79.38 },
-        { city: 'Shanghai', country: 'China', lat: 31.23, lng: 121.47 },
-        { city: 'Yilan', country: 'Taiwan', lat: 24.75, lng: 121.75 },
-        { city: 'New York', country: 'USA', lat: 40.71, lng: -74.01 },
-        { city: 'San Francisco', country: 'USA', lat: 37.79, lng: -122.41 },
-        { city: 'Los Angeles', country: 'USA', lat: 34.05, lng: -118.24 },
-        { city: 'Markham', country: 'Canada', lat: 43.86, lng: -79.34 },
-        { city: 'Calgary', country: 'Canada', lat: 51.05, lng: -114.06 },
-        { city: 'Chiba', country: 'Japan', lat: 35.55, lng: 140.26 },
-        { city: 'Beijing', country: 'China', lat: 40.19, lng: 116.41 },
-        { city: 'Pingtung', country: 'Taiwan', lat: 22.68, lng: 120.49 },
-        { city: 'Mountain View', country: 'USA', lat: 37.39, lng: -122.08 },
-        { city: 'Sunnyvale', country: 'USA', lat: 37.37, lng: -122.04 },
-        { city: 'Chicago', country: 'USA', lat: 41.88, lng: -87.62 },
-        { city: 'Bellevue', country: 'USA', lat: 47.61, lng: -122.19 },
-        { city: 'Auckland', country: 'New Zealand', lat: -36.85, lng: 174.76 },
-        { city: 'Düsseldorf', country: 'Germany', lat: 51.23, lng: 6.78 },
-        { city: 'Guangzhou', country: 'China', lat: 23.13, lng: 113.26 },
-        { city: 'Xiamen', country: 'China', lat: 24.54, lng: 118.08 },
-        { city: 'Chengdu', country: 'China', lat: 30.66, lng: 104.06 },
-        { city: 'Washington', country: 'USA', lat: 38.9, lng: -77.04 },
-        { city: 'Houston', country: 'USA', lat: 29.76, lng: -95.37 },
-        { city: 'Irvine', country: 'USA', lat: 33.69, lng: -117.83 },
-        { city: 'Vancouver', country: 'Canada', lat: 49.28, lng: -123.12 },
-        { city: 'Burnaby', country: 'Canada', lat: 49.24, lng: -122.97 },
-        { city: 'Christchurch', country: 'New Zealand', lat: -43.53, lng: 172.64 },
-        { city: 'Stuttgart', country: 'Germany', lat: 48.78, lng: 9.18 },
-        { city: 'Hamburg', country: 'Germany', lat: 53.55, lng: 10.0 },
-        { city: 'Paris', country: 'France', lat: 48.85, lng: 2.35 },
-        { city: 'Bangkok', country: 'Thailand', lat: 13.75, lng: 100.49 },
-        { city: 'Dubai', country: 'UAE', lat: 25.07, lng: 55.19 }
-      ];
-
-      const WORLD_PATH = 'M670.03,150.97 L672.86,152.03 L674.96,151.66 L675.54,150.40 L677.73,149.98 L679.30,149.13 L679.85,146.91 L682.19,146.37 L682.63,145.39 L683.94,146.13 L684.77,146.21 L686.32,146.23 L688.42,146.82 L689.27,147.16 L691.28,146.27 L692.21,146.80 L693.11,145.53 L694.77,145.59 L695.20,145.18 L695.49,144.06 L696.69,143.09 L698.19,143.73 L697.89,144.57 L698.73,144.71 L698.47,147.04 L699.57,147.95 L700.54,147.37 L701.77,147.09 L703.50,145.85 L705.41,146.05 L708.28,146.06 L708.77,146.85 L707.16,147.16 L705.74,147.68 L702.56,148.00 L699.57,148.58 L697.95,149.79 L698.61,150.97 L698.93,152.35 L697.54,153.52 L697.66,154.59 L696.89,155.59 L694.25,155.50 L695.34,157.34 L693.58,158.04 L692.40,159.72 L692.55,161.38 L691.46,162.17 L690.44,161.91 L688.31,162.27 L688.01,163.05 L685.94,163.04 L684.39,164.61 L684.30,166.98 L680.69,168.13 L678.75,167.89 L678.19,168.50 L676.53,168.14 L673.75,168.56 L669.10,167.14 L671.61,164.62 L671.39,162.83 L669.28,162.37 L669.07,160.60 L668.16,158.39 L669.34,156.86 L668.13,156.45 L668.90,154.43 L670.03,150.97 Z M545.35,266.33 L546.04,268.40 L546.83,270.06 L547.47,270.96 L548.54,272.41 L550.37,272.19 L551.29,271.80 L552.82,272.19 L553.24,271.49 L553.94,269.88 L555.66,269.77 L555.81,269.29 L557.23,269.28 L556.99,270.28 L560.36,270.25 L560.41,272.00 L560.97,273.07 L560.56,274.75 L560.76,276.45 L561.69,277.49 L561.54,280.79 L562.23,280.54 L563.44,280.60 L565.16,280.19 L566.42,280.35 L566.72,281.21 L566.40,282.56 L566.89,283.86 L566.47,284.91 L566.71,285.86 L560.93,285.83 L560.80,294.67 L562.67,296.94 L564.49,298.68 L559.38,299.81 L552.66,299.41 L550.73,298.08 L539.47,298.20 L539.05,298.40 L537.40,297.14 L535.59,297.06 L533.93,297.53 L532.59,298.06 L532.33,296.31 L532.72,293.87 L533.68,291.33 L533.82,290.14 L534.72,287.63 L535.38,286.49 L536.98,284.68 L537.87,283.44 L538.16,281.38 L538.02,279.81 L537.19,278.82 L536.45,277.13 L535.76,275.46 L535.91,274.89 L536.77,273.79 L535.93,271.10 L535.36,269.24 L533.96,267.48 L534.23,266.94 L535.38,266.57 L536.18,266.62 L537.15,266.29 L545.35,266.33 Z M318.06,403.33 L315.42,403.47 L314.00,402.49 L312.33,402.42 L309.35,402.42 L309.35,396.21 L310.42,397.50 L311.81,399.58 L315.42,401.25 L319.31,401.94 L318.06,403.33 Z M370.10,20.48 L379.43,18.82 L389.17,18.94 L392.72,17.92 L402.53,17.65 L424.72,18.00 L442.10,20.20 L436.97,21.27 L426.34,21.40 L411.39,21.67 L412.79,22.16 L422.62,21.86 L430.99,22.81 L436.38,21.96 L438.69,22.96 L435.64,24.58 L442.71,23.54 L456.20,22.47 L464.53,23.00 L466.09,24.19 L454.76,26.17 L453.19,26.81 L444.32,27.29 L450.75,27.42 L447.50,29.44 L445.26,31.25 L445.35,34.34 L448.69,36.15 L444.35,36.27 L439.78,37.14 L444.91,38.62 L445.56,40.98 L442.59,41.23 L446.19,43.62 L440.02,43.82 L443.24,44.95 L442.33,45.93 L438.41,46.36 L434.54,46.37 L438.02,48.25 L438.06,49.49 L432.56,48.34 L431.13,49.08 L434.88,49.78 L438.52,51.48 L439.57,53.71 L434.62,54.25 L432.48,53.18 L429.05,51.58 L430.00,53.47 L426.77,54.93 L434.09,55.04 L437.92,55.20 L430.47,57.61 L422.92,59.80 L414.80,60.76 L411.73,60.78 L408.86,61.85 L404.99,64.78 L399.02,66.73 L397.10,66.84 L393.40,67.52 L389.41,68.17 L387.03,69.89 L386.99,71.84 L385.59,73.66 L381.06,75.88 L382.18,78.05 L380.93,80.35 L379.50,83.06 L375.59,83.23 L371.49,80.96 L365.94,80.95 L363.24,79.43 L361.39,76.71 L356.57,73.26 L355.17,71.45 L354.79,68.95 L350.94,66.39 L351.94,64.34 L350.09,63.36 L352.83,60.12 L357.01,59.08 L358.11,57.92 L358.69,55.75 L355.52,56.74 L354.01,57.15 L351.51,57.55 L348.10,56.64 L347.92,54.75 L349.00,53.27 L351.58,53.23 L357.25,53.97 L352.47,52.21 L349.99,51.26 L347.22,51.65 L344.90,50.96 L348.01,48.37 L346.32,47.34 L344.11,45.42 L340.77,42.47 L337.23,41.39 L337.26,40.23 L329.81,38.60 L323.91,38.40 L316.49,38.51 L309.71,38.72 L306.49,37.83 L301.66,36.09 L308.95,35.21 L314.54,35.07 L302.66,34.34 L296.40,33.21 L296.78,32.13 L307.30,30.79 L317.47,29.46 L318.54,28.45 L311.05,27.45 L313.47,26.34 L323.09,24.41 L327.13,24.11 L325.97,22.86 L332.55,22.13 L341.09,21.69 L349.63,21.67 L352.66,22.53 L360.03,21.00 L366.66,22.04 L370.56,22.26 L376.32,23.16 L369.72,21.67 L370.10,20.48 Z';
+      const MAP_LOCATIONS = [];
+      const WORLD_PATH = window.S4_WORLD_PATH || '';
+      const MAP_POINTS = window.S4_POINTS || [];
 
       const s4MapSvg = document.getElementById('s4MapSvg');
       const s4Tooltip = document.getElementById('s4Tooltip');
@@ -1218,8 +1168,8 @@
           <rect width="1000" height="500" fill="url(#dotPattern)" mask="url(#landMask)"></rect>
         `;
 
-        MAP_LOCATIONS.forEach((loc, i) => {
-          const { x, y } = project(loc.lat, loc.lng);
+        MAP_POINTS.forEach((pt, i) => {
+          const [x, y] = pt;
           const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
           g.style.cursor = 'pointer';
 
@@ -1242,7 +1192,7 @@
 
           g.addEventListener('mouseenter', () => {
             s4Tooltip.style.display = 'block';
-            s4Tooltip.innerHTML = `<div class="map-tooltip-country">${loc.country.toUpperCase()}</div><div class="map-tooltip-city">${loc.city}</div>`;
+            s4Tooltip.innerHTML = `<div class="map-tooltip-country">GLOBAL MEMBER</div><div class="map-tooltip-city">Point #${i + 1}</div>`;
             const box = s4MapSvg.getBoundingClientRect();
             const wrap = document.getElementById('s4Map').getBoundingClientRect();
             const left = ((x / 1000) * box.width) + (box.left - wrap.left);
