@@ -986,7 +986,15 @@
         background: #ffae4c;
       }
       .s7-main { flex: 1; min-width: 320px; }
-      .s7-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; }
+      .s7-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        gap: 20px;
+        padding-left: 3.4%;
+        padding-right: 3.4%;
+      }
       .s7-title { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.05em; }
       .s7-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
       .s7-filter {
@@ -1005,7 +1013,7 @@
         gap: 20px;
       }
       .s7-card {
-        width: 80%;
+        width: calc(80% + 5px);
         margin: 0 auto;
         background: #fff;
         border: 1px solid #000;
