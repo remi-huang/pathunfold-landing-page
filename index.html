@@ -644,6 +644,38 @@
         .slot-body { transform: scale(.9); transform-origin: center; }
       
       }
+      /* ===== SECTION 4: Dotted World Map ===== */
+      #section-4-world-map {
+        width: 100%;
+        padding: 20px 100px 80px;
+        background: #fdfdfa;
+      }
+      .s4-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
+      .s4-map {
+        width: 100%;
+        height: 520px;
+        border: 1px solid #cfcfc8;
+        border-radius: 14px;
+        background: transparent;
+        position: relative;
+        overflow: hidden;
+      }
+      .s4-map svg { width: 100%; height: 100%; display: block; }
+      .map-tooltip {
+        position: absolute;
+        min-width: 120px;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        box-shadow: 0 15px 35px -10px rgba(0,0,0,.2), 0 10px 20px -8px rgba(0,0,0,.1);
+        padding: 8px 12px;
+        pointer-events: none;
+        transform: translate(-50%, -115%);
+        z-index: 8;
+      }
+      .map-tooltip-country { font-size: 10px; font-weight: 900; color: #ed9b2c; letter-spacing: .1em; }
+      .map-tooltip-city { font-size: 13px; font-weight: 800; color: #111827; margin-top: 4px; }
+
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
         .hero-row { flex-direction: column; }
@@ -669,6 +701,9 @@
         .slot-body { width: 100%; max-width: 650px; transform: none; }
         .slot-header { font-size: 26px; margin: 20px 0; }
         .slot-lever-track { display: none; }
+
+        #section-4-world-map { padding: 14px 14px 36px; }
+        .s4-map { height: 380px; }
       }
     </style>
   </head>
@@ -861,6 +896,18 @@
               <div class="slot-lever-stick"></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 4: Dotted World Map -->
+    <!-- ========================= -->
+    <section id="section-4-world-map" data-section="4-world-map">
+      <div class="s4-wrap">
+        <div class="s4-map" id="s4Map">
+          <svg id="s4MapSvg" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-label="community world map"></svg>
+          <div class="map-tooltip" id="s4Tooltip" style="display:none;"></div>
         </div>
       </div>
     </section>
@@ -1089,6 +1136,101 @@
       slotLever.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); spinSlots(); }
       });
+
+      // SECTION 4：世界地图（按 Framer DottedWorldMap 逻辑复原）
+      const MAP_LOCATIONS = [
+        { city: 'Taipei', country: 'Taiwan', lat: 25.04, lng: 121.56 },
+        { city: 'Taichung', country: 'Taiwan', lat: 24.16, lng: 120.65 },
+        { city: 'Kaohsiung', country: 'Taiwan', lat: 22.62, lng: 120.31 },
+        { city: 'Hong Kong', country: 'Hong Kong', lat: 22.25, lng: 114.19 },
+        { city: 'Singapore', country: 'Singapore', lat: 1.36, lng: 103.82 },
+        { city: 'Tokyo', country: 'Japan', lat: 35.68, lng: 139.76 },
+        { city: 'Shanghai', country: 'China', lat: 31.23, lng: 121.47 },
+        { city: 'Beijing', country: 'China', lat: 40.19, lng: 116.41 },
+        { city: 'Guangzhou', country: 'China', lat: 23.13, lng: 113.26 },
+        { city: 'Chengdu', country: 'China', lat: 30.66, lng: 104.06 },
+        { city: 'Sydney', country: 'Australia', lat: -33.82, lng: 151.17 },
+        { city: 'Melbourne', country: 'Australia', lat: -37.88, lng: 145.16 },
+        { city: 'Auckland', country: 'New Zealand', lat: -36.85, lng: 174.76 },
+        { city: 'London', country: 'UK', lat: 51.51, lng: -0.13 },
+        { city: 'Paris', country: 'France', lat: 48.85, lng: 2.35 },
+        { city: 'Düsseldorf', country: 'Germany', lat: 51.23, lng: 6.78 },
+        { city: 'Dubai', country: 'UAE', lat: 25.07, lng: 55.19 },
+        { city: 'Bangkok', country: 'Thailand', lat: 13.75, lng: 100.49 },
+        { city: 'San Francisco', country: 'USA', lat: 37.79, lng: -122.41 },
+        { city: 'San Jose', country: 'USA', lat: 37.34, lng: -121.89 },
+        { city: 'Los Angeles', country: 'USA', lat: 34.05, lng: -118.24 },
+        { city: 'New York', country: 'USA', lat: 40.71, lng: -74.01 },
+        { city: 'Toronto', country: 'Canada', lat: 43.65, lng: -79.38 },
+        { city: 'Vancouver', country: 'Canada', lat: 49.28, lng: -123.12 }
+      ];
+
+      const WORLD_PATH = 'M87,160 C130,120 190,110 245,128 C275,138 305,140 338,134 C372,128 412,98 456,98 C500,98 516,130 548,136 C593,145 618,128 656,125 C694,122 735,135 770,157 C807,181 832,185 872,182 C903,180 932,193 962,214 C930,230 906,251 890,274 C870,303 841,327 792,332 C745,336 698,320 660,320 C620,320 585,336 550,350 C513,364 476,370 438,367 C399,365 363,356 322,342 C282,329 229,324 194,303 C159,283 125,251 101,214 C90,197 83,180 87,160 Z';
+
+      const s4MapSvg = document.getElementById('s4MapSvg');
+      const s4Tooltip = document.getElementById('s4Tooltip');
+
+      function project(lat, lng) {
+        return {
+          x: (lng + 180) * (1000 / 360),
+          y: (90 - lat) * (500 / 180)
+        };
+      }
+
+      function renderMap() {
+        s4MapSvg.innerHTML = `
+          <defs>
+            <pattern id="dotPattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.4" fill="rgba(0,0,0,.12)"></circle>
+            </pattern>
+            <mask id="landMask">
+              <path fill="white" d="${WORLD_PATH}"></path>
+              <rect width="1000" height="42" y="0" fill="black"></rect>
+              <rect width="1000" height="85" y="415" fill="black"></rect>
+            </mask>
+          </defs>
+          <rect width="1000" height="500" fill="url(#dotPattern)" mask="url(#landMask)"></rect>
+        `;
+
+        MAP_LOCATIONS.forEach((loc, i) => {
+          const { x, y } = project(loc.lat, loc.lng);
+          const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          g.style.cursor = 'pointer';
+
+          const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          pulse.setAttribute('cx', x);
+          pulse.setAttribute('cy', y);
+          pulse.setAttribute('r', '4.5');
+          pulse.setAttribute('fill', '#ED9B2C');
+          pulse.setAttribute('opacity', '0.6');
+          pulse.innerHTML = '<animate attributeName="r" values="4.5;14" dur="2.2s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.6;0" dur="2.2s" repeatCount="indefinite" />';
+
+          const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          dot.setAttribute('cx', x);
+          dot.setAttribute('cy', y);
+          dot.setAttribute('r', '2.2');
+          dot.setAttribute('fill', '#ED9B2C');
+
+          g.appendChild(pulse);
+          g.appendChild(dot);
+
+          g.addEventListener('mouseenter', () => {
+            s4Tooltip.style.display = 'block';
+            s4Tooltip.innerHTML = `<div class="map-tooltip-country">${loc.country.toUpperCase()}</div><div class="map-tooltip-city">${loc.city}</div>`;
+            const box = s4MapSvg.getBoundingClientRect();
+            const wrap = document.getElementById('s4Map').getBoundingClientRect();
+            const left = ((x / 1000) * box.width) + (box.left - wrap.left);
+            const top = ((y / 500) * box.height) + (box.top - wrap.top);
+            s4Tooltip.style.left = `${left}px`;
+            s4Tooltip.style.top = `${top}px`;
+          });
+          g.addEventListener('mouseleave', () => { s4Tooltip.style.display = 'none'; });
+
+          s4MapSvg.appendChild(g);
+        });
+      }
+
+      renderMap();
     </script>
   </body>
 </html>
