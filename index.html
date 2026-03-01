@@ -1208,10 +1208,12 @@
         position: relative;
         height: 410px;
         overflow: hidden;
+        perspective: 1200px;
       }
       .s9-track {
         position: absolute;
         inset: 0;
+        transform-style: preserve-3d;
       }
       .s9-card {
         position: absolute;
@@ -1222,6 +1224,7 @@
         background: #fff;
         overflow: hidden;
         transform-origin: center center;
+        will-change: transform;
       }
       .s9-card img {
         width: 100%;
@@ -2170,26 +2173,45 @@
 
       function initS9Arc() {
         const arc = document.getElementById('s9Arc');
-        const cards = [...document.querySelectorAll('#s9Track .s9-card')];
-        if (!arc || !cards.length) return;
+        const track = document.getElementById('s9Track');
+        if (!arc || !track) return;
 
-        const position = () => {
-          const n = cards.length;
-          const radiusX = Math.min(arc.clientWidth * 0.4, 640);
-          const radiusY = 92;
+        const seed = [...track.querySelectorAll('.s9-card img')].map((img) => ({ src: img.src, alt: img.alt || '' }));
+        if (!seed.length) return;
+
+        const total = 12;
+        track.innerHTML = Array.from({ length: total }).map((_, i) => {
+          const it = seed[i % seed.length];
+          return `<article class="s9-card"><img src="${it.src}" alt="${it.alt || `showcase ${i+1}`}"/></article>`;
+        }).join('');
+
+        const cards = [...track.querySelectorAll('.s9-card')];
+        let rot = 0;
+
+        function frame() {
+          rot += 0.0019;
+
+          const cx = arc.clientWidth / 2;
+          const cy = arc.clientHeight + 210;
+          const r = Math.min(arc.clientWidth * 0.58, 980);
+          const step = (Math.PI * 2) / cards.length;
+
           cards.forEach((card, i) => {
-            const progress = n === 1 ? 0.5 : i / (n - 1);
-            const x = (progress - 0.5) * 2 * radiusX;
-            const norm = Math.abs((progress - 0.5) * 2);
-            const y = Math.pow(norm, 1.35) * radiusY;
-            card.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-            card.style.zIndex = String(100 - Math.round(norm * 20));
-            card.style.filter = 'none';
-          });
-        };
+            const a = -Math.PI / 2 + i * step + rot;
+            const x = cx + Math.cos(a) * r;
+            const y = cy + Math.sin(a) * r;
+            const rotate = (a * 180 / Math.PI) + 90;
+            const depth = 1 - Math.min(Math.abs((a + Math.PI / 2) / (Math.PI * 0.9)), 1);
+            const scale = 0.82 + depth * 0.28;
 
-        position();
-        window.addEventListener('resize', position);
+            card.style.transform = `translate(-50%, -50%) translate(${x - cx}px, ${y - arc.clientHeight / 2}px) rotate(${rotate}deg) scale(${scale})`;
+            card.style.zIndex = String(Math.round(20 + depth * 80));
+          });
+
+          requestAnimationFrame(frame);
+        }
+
+        requestAnimationFrame(frame);
       }
 
       renderMap();
