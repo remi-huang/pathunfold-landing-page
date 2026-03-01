@@ -744,7 +744,21 @@
         width: 100%;
         padding: 10px 100px 70px;
         background: #fdfdfa;
+        position: relative;
       }
+      #section-5-city-ticker::before,
+      #section-5-city-ticker::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 1px;
+        background: #000;
+        pointer-events: none;
+      }
+      #section-5-city-ticker::before { top: 0; }
+      #section-5-city-ticker::after { bottom: 0; }
       .s5-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
       .s5-ticker {
         width: 100%;
