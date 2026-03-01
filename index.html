@@ -1203,16 +1203,26 @@
         font-size: 12px;
         line-height: 1.6;
       }
-      .s9-row {
+      .s9-arc {
         margin-top: 84px;
-        display: grid;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 24px;
+        position: relative;
+        height: 380px;
+        overflow: hidden;
+      }
+      .s9-track {
+        position: absolute;
+        inset: 0;
       }
       .s9-card {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 245px;
         border: 1px solid #3a3a3a;
         background: #fff;
         overflow: hidden;
+        transform-origin: center center;
+        will-change: transform, filter;
       }
       .s9-card img {
         width: 100%;
@@ -1240,7 +1250,7 @@
         #section-9-showcase { padding: 56px 20px 52px; }
         .s9-title { font-size: 30px; }
         .s9-desc { font-size: 12px; }
-        .s9-row { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 40px; }
+        .s9-arc { height: 280px; margin-top: 40px; }
       }
 
       @media (max-width: 900px) {
@@ -1644,12 +1654,14 @@
         <h2 class="s9-title">从「试验空间」到「用AI发电」独立社群</h2>
         <p class="s9-desc">在「一口新饭」社群里，我们开设了「用A发电」空间。<br/>各行各业的普通人在这里学会用AI实现想法: 内容创作者用AI加速创作，一人企业创业者搭建自动化运营系统，在校大学生成功上架第一个AppStore应用，甚至资深程序员也转变心态成为独立开发者开启自己的事业....<br/>每周的直播让每个人，包括行业专家都能收获 unknownunknowns，这才是跨界交流的魅力。</p>
 
-        <div class="s9-row">
-          <article class="s9-card"><img src="assets/showcase/post-1.png" alt="showcase 1"/></article>
-          <article class="s9-card"><img src="assets/showcase/post-2.png" alt="showcase 2"/></article>
-          <article class="s9-card"><img src="assets/showcase/post-3.png" alt="showcase 3"/></article>
-          <article class="s9-card"><img src="assets/showcase/post-4.png" alt="showcase 4"/></article>
-          <article class="s9-card"><img src="assets/showcase/post-5.png" alt="showcase 5"/></article>
+        <div class="s9-arc" id="s9Arc">
+          <div class="s9-track" id="s9Track">
+            <article class="s9-card"><img src="assets/showcase/post-1.png" alt="showcase 1"/></article>
+            <article class="s9-card"><img src="assets/showcase/post-2.png" alt="showcase 2"/></article>
+            <article class="s9-card"><img src="assets/showcase/post-3.png" alt="showcase 3"/></article>
+            <article class="s9-card"><img src="assets/showcase/post-4.png" alt="showcase 4"/></article>
+            <article class="s9-card"><img src="assets/showcase/post-5.png" alt="showcase 5"/></article>
+          </div>
         </div>
       </div>
     </section>
@@ -2157,10 +2169,41 @@
         if (r) { s7Cart = s7Cart.filter(i => i.id !== Number(r.dataset.remove)); renderS7(); }
       });
 
+      function initS9Arc() {
+        const arc = document.getElementById('s9Arc');
+        const cards = [...document.querySelectorAll('#s9Track .s9-card')];
+        if (!arc || !cards.length) return;
+
+        let t = 0;
+        const speed = 0.00038;
+        const radiusY = 88;
+
+        function frame(ts) {
+          t += speed * 16;
+          const n = cards.length;
+          const radiusX = Math.min(arc.clientWidth * 0.41, 650);
+          cards.forEach((card, i) => {
+            const p = ((i / n) + t) % 1;
+            const theta = (p * Math.PI * 2) - Math.PI / 2;
+            const x = Math.cos(theta) * radiusX;
+            const y = Math.sin(theta) * radiusY * 0.55;
+            const depth = (Math.sin(theta) + 1) / 2;
+            const scale = 0.82 + depth * 0.32;
+            const z = Math.round(depth * 100);
+            card.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) scale(${scale})`;
+            card.style.zIndex = String(z);
+            card.style.filter = `brightness(${0.88 + depth * 0.12})`;
+          });
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
       renderMap();
       renderPie();
       renderTicker();
       renderS7();
+      initS9Arc();
     </script>
   </body>
 </html>
