@@ -3,361 +3,510 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PathUnfold Landing</title>
+    <title>PathUnfold — 用 AI 发电</title>
+    <meta
+      name="description"
+      content="拥抱你的新身份，与同行者一起用 vibe coding 把想法变成现实。"
+    />
+
     <style>
       :root {
-        --bg: #f1f1f1;
-        --text: #111;
-        --muted: #3b3b3b;
-        --line: #d8d8d8;
-        --brand: #e59c24;
-        --brand-dark: #b97812;
-        --nav-height: 90px;
+        --bg: #f8f6f1;
+        --paper: #fffdf8;
+        --text: #101010;
+        --muted: #525252;
+        --line: #d8d4ca;
+        --brand: #e8a83e;
+        --brand-dark: #ad6e11;
+        --radius: 18px;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html,
       body {
         margin: 0;
-        font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
-        background: var(--bg);
+        background: radial-gradient(circle at 20% -10%, #fff4da 0, transparent 50%), var(--bg);
         color: var(--text);
+        font-family: "PingFang SC", "Noto Sans SC", "Inter", "Microsoft YaHei", sans-serif;
+        scroll-behavior: smooth;
       }
 
-      .topbar {
-        height: var(--nav-height);
-        border-bottom: 2px solid var(--line);
-        background: #f6f6f6;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      .topbar-inner {
-        max-width: 1680px;
+      .container {
+        width: min(1200px, 92vw);
         margin: 0 auto;
-        height: 100%;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: rgba(248, 246, 241, 0.78);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        height: 76px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 56px;
       }
 
-      .nav-left {
+      .brand {
         display: flex;
         align-items: center;
-        gap: 26px;
+        gap: 12px;
+        font-weight: 700;
       }
 
       .brand-mark {
-        width: 54px;
-        height: 54px;
-        border-right: 1px solid #ddd;
-        padding-right: 18px;
-        display: grid;
-        place-items: center;
-      }
-
-      .brand-mark::before {
-        content: "⬡";
-        color: #b18f59;
-        font-size: 34px;
-        line-height: 1;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: linear-gradient(145deg, #f9c772, #ce8414);
+        box-shadow: 0 10px 20px rgba(173, 110, 17, 0.24);
       }
 
       .nav-links {
         display: flex;
-        gap: 34px;
-        font-size: 38px;
-        font-weight: 500;
+        gap: 30px;
+        color: #222;
       }
 
-      .nav-links a {
-        color: #1e1e1e;
-        text-decoration: none;
-      }
-
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
-
-      .join-btn {
-        min-width: 148px;
-        height: 48px;
-        padding: 0 24px;
-        border-radius: 8px;
-        border: 2px solid var(--brand-dark);
-        background: var(--brand);
-        color: #111;
-        font-size: 31px;
+      .btn {
+        border: 0;
+        border-radius: 12px;
+        padding: 12px 18px;
         font-weight: 700;
         cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
 
-      .avatar {
-        width: 44px;
-        height: 44px;
-        border: 2px solid #111;
-        border-radius: 50%;
-        position: relative;
+      .btn:hover {
+        transform: translateY(-1px);
       }
 
-      .avatar::before,
-      .avatar::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 2px solid #111;
-        border-radius: 999px;
+      .btn-primary {
+        background: linear-gradient(180deg, #f6bf62, var(--brand));
+        color: #141414;
+        box-shadow: 0 10px 20px rgba(173, 110, 17, 0.24);
       }
 
-      .avatar::before {
-        top: 8px;
-        width: 12px;
-        height: 12px;
-      }
-
-      .avatar::after {
-        top: 24px;
-        width: 20px;
-        height: 10px;
-        border-top-left-radius: 14px;
-        border-top-right-radius: 14px;
-        border-bottom: 0;
+      .btn-secondary {
+        background: #fff;
+        border: 1px solid #d3c9b8;
       }
 
       .hero {
-        max-width: 1680px;
-        margin: 0 auto;
-        min-height: calc(100vh - var(--nav-height));
-        padding: 60px 56px 72px;
+        padding: 58px 0 40px;
       }
 
       .hero-title {
-        margin: 22px 0 34px;
-        font-size: clamp(56px, 7.2vw, 146px);
-        line-height: 1.08;
-        letter-spacing: 0.01em;
-        font-weight: 900;
+        margin: 0 0 26px;
+        font-size: clamp(42px, 7vw, 92px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1fr 1.15fr;
-        gap: 52px;
-        align-items: center;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 24px;
+        align-items: stretch;
       }
 
-      .visual-wrap {
-        position: relative;
-        width: 100%;
-      }
-
-      .lighting-frame {
-        width: 100%;
-        max-width: 690px;
-        margin: 0 auto;
-        aspect-ratio: 16 / 10;
-        border-radius: 12px;
+      .card {
+        background: var(--paper);
+        border: 1px solid #e4dfd5;
+        border-radius: var(--radius);
         overflow: hidden;
-        background: #ececec;
+      }
+
+      .lighting-scene {
+        position: relative;
+        min-height: 500px;
+      }
+
+      .lighting-state {
+        display: none;
+        height: 100%;
+        grid-template-columns: 78px 1fr;
+      }
+
+      .lighting-state.is-active {
+        display: grid;
+      }
+
+      .lighting-switch {
+        border: 0;
+        background: transparent;
+        padding: 16px 10px;
+        cursor: pointer;
+      }
+
+      .lighting-switch img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .lighting-media {
+        min-height: 500px;
       }
 
       .lighting-video {
         width: 100%;
         height: 100%;
         object-fit: contain;
-        display: block;
-        background: #ececec;
+        background: #f3f0e8;
       }
 
-      .lighting-switch {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-36%);
-        width: clamp(48px, 7vw, 74px);
-        height: clamp(94px, 12vw, 138px);
-        border: 0;
-        background: transparent;
-        cursor: pointer;
-        padding: 0;
+      .hero-copy {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
-      .lighting-switch img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-
-      .text-block {
-        max-width: 860px;
-      }
-
-      .hero-sub {
+      .hero-copy h2 {
         margin: 0;
-        font-size: clamp(24px, 2.05vw, 44px);
-        line-height: 1.6;
-        color: #202020;
+        font-size: clamp(34px, 5vw, 62px);
+        line-height: 1.08;
+      }
+
+      .hero-copy p {
+        margin: 16px 0 28px;
+        color: var(--muted);
+        font-size: clamp(16px, 1.7vw, 22px);
+        line-height: 1.65;
       }
 
       .cta-row {
-        margin-top: 58px;
         display: flex;
-        gap: 22px;
         flex-wrap: wrap;
+        gap: 12px;
       }
 
-      .cta-btn {
-        height: 64px;
-        min-width: 252px;
-        padding: 0 28px;
-        border-radius: 10px;
-        font-size: clamp(22px, 1.45vw, 30px);
+      .marquee-wrap {
+        margin: 32px 0 8px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: #fff8ea;
+        overflow: hidden;
+      }
+
+      .marquee {
+        display: flex;
+        width: max-content;
+        gap: 34px;
+        padding: 12px 0;
+        white-space: nowrap;
         font-weight: 700;
-        cursor: pointer;
+        color: #5e4c2e;
       }
 
-      .cta-primary {
-        border: 2px solid var(--brand-dark);
-        background: var(--brand);
-        color: #111;
+      .section {
+        padding: 66px 0;
       }
 
-      .cta-secondary {
-        border: 2px solid #c27f18;
-        background: #f6f6f6;
-        color: #5a5a5a;
+      .section h3 {
+        margin: 0 0 20px;
+        font-size: clamp(28px, 4vw, 44px);
       }
 
-      @media (max-width: 1180px) {
-        .topbar-inner {
-          padding: 0 20px;
-        }
+      .path-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
 
+      .path-card {
+        padding: 22px;
+        border-radius: 16px;
+        border: 1px solid #e0d9cb;
+        background: #fff;
+      }
+
+      .path-card .tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 12px;
+        border: 1px solid #e3d9c4;
+        border-radius: 999px;
+        padding: 4px 10px;
+        color: #7c6439;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat {
+        background: #fff;
+        border: 1px solid #e0d9cb;
+        border-radius: 16px;
+        padding: 18px;
+      }
+
+      .stat .num {
+        font-size: clamp(26px, 3.4vw, 42px);
+        font-weight: 800;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        padding: 24px 0 40px;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      @media (max-width: 980px) {
         .nav-links {
-          font-size: 26px;
-          gap: 20px;
-        }
-
-        .join-btn {
-          font-size: 20px;
-          min-width: 112px;
-          height: 40px;
-        }
-
-        .hero {
-          padding: 34px 20px 54px;
+          display: none;
         }
 
         .hero-grid {
           grid-template-columns: 1fr;
-          gap: 38px;
         }
 
-        .lighting-switch {
-          left: 0;
-          transform: translateY(-50%);
+        .lighting-scene,
+        .lighting-media {
+          min-height: 380px;
+        }
+
+        .path-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
     </style>
   </head>
+
   <body>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <div class="nav-left">
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">
           <div class="brand-mark" aria-hidden="true"></div>
-          <nav class="nav-links" aria-label="主导航">
-            <a href="#">社区</a>
-            <a href="#">课程</a>
-            <a href="#">FAQ</a>
-          </nav>
+          <span>PathUnfold</span>
         </div>
-        <div class="nav-right">
-          <button class="join-btn" type="button">加入我们</button>
-          <div class="avatar" aria-hidden="true"></div>
-        </div>
+
+        <nav class="nav-links" aria-label="主导航">
+          <a href="#community">社区</a>
+          <a href="#courses">课程</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <button class="btn btn-primary" type="button">加入我们</button>
       </div>
     </header>
 
-    <main class="hero">
-      <h1 class="hero-title">用AI「发电」<br />拥抱你的新身份</h1>
+    <main>
+      <section class="hero container">
+        <h1 class="hero-title reveal">用 AI「发电」</h1>
 
-      <section class="hero-grid">
-        <div class="visual-wrap">
-          <button class="lighting-switch" id="switchBtn" type="button" aria-label="切换灯光">
-            <img id="switchImg" src="hero section lighting/关灯开关.avif" alt="关灯开关" />
-          </button>
+        <div class="hero-grid">
+          <div class="card lighting-scene reveal" id="lightingScene">
+            <div class="lighting-state is-active" data-state="off">
+              <button class="lighting-switch" type="button" data-target-state="on" aria-label="开灯">
+                <img src="hero section lighting/关灯开关.avif" alt="开灯按钮" />
+              </button>
+              <div class="lighting-media">
+                <video class="lighting-video" autoplay muted loop playsinline preload="metadata">
+                  <source src="hero section lighting/关灯效果.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
 
-          <div class="lighting-frame">
-            <video
-              id="lightingVideo"
-              class="lighting-video"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            >
-              <source src="hero section lighting/关灯效果.mp4" type="video/mp4" />
-              您的浏览器不支持视频播放
-            </video>
+            <div class="lighting-state" data-state="on">
+              <button class="lighting-switch" type="button" data-target-state="off" aria-label="关灯">
+                <img src="hero section lighting/开灯开关.avif" alt="关灯按钮" />
+              </button>
+              <div class="lighting-media">
+                <video class="lighting-video" muted loop playsinline preload="metadata">
+                  <source src="hero section lighting/开灯效果video.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <article class="card hero-copy reveal">
+            <div>
+              <h2>拥抱你的新身份</h2>
+              <p>
+                与同行者一起，用 vibe coding 把想法变成现实。让 AI 帮你从“工具人”走向
+                problem solver 与创造者，完成思维和身份的升级。
+              </p>
+            </div>
+
+            <div class="cta-row">
+              <button class="btn btn-primary" type="button">成为早期会员</button>
+              <button class="btn btn-secondary" type="button">了解我们的故事</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="marquee-wrap">
+        <div class="marquee" id="marqueeTrack">
+          <span>NEW! OpenClaw 打造属于你自己的 Siri 个人助理</span>
+          <span>Cursor 101 - 制作 3 个 Web App</span>
+          <span>Claude Code · Gemini CLI · Codex CLI 101</span>
+          <span>MCP 101 - 让你的 AI 使用各种工具</span>
+          <span>NEW! OpenClaw 打造属于你自己的 Siri 个人助理</span>
+          <span>Cursor 101 - 制作 3 个 Web App</span>
+        </div>
+      </div>
+
+      <section class="section container" id="courses">
+        <h3 class="reveal">找到属于你的 Vibe Coding 路径</h3>
+
+        <div class="path-grid">
+          <article class="path-card reveal">
+            <span class="tag">从零开始</span>
+            <h4>我是完全新手 · The Vibe Coder</h4>
+            <p>没有编程背景？这正是你的优势。我们会教你如何用自然语言驱动 AI。</p>
+          </article>
+
+          <article class="path-card reveal">
+            <span class="tag">构建产品</span>
+            <h4>从创意到上架</h4>
+            <p>通过 ChatGPT、AI 浏览器等实战项目，把灵感转化为可用产品。</p>
+          </article>
+
+          <article class="path-card reveal">
+            <span class="tag">自动化</span>
+            <h4>打造你的 AI 工具箱</h4>
+            <p>将日常流程自动化，搭建可持续迭代的个人工作流系统。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="community">
+        <h3 class="reveal">分布在全球的创作者社区</h3>
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="num">1800+</div>
+            <div>社群成员</div>
+          </div>
+          <div class="stat reveal">
+            <div class="num">260+</div>
+            <div>覆盖城市</div>
+          </div>
+          <div class="stat reveal">
+            <div class="num">90%</div>
+            <div>非技术背景</div>
+          </div>
+          <div class="stat reveal">
+            <div class="num">每周</div>
+            <div>直播 + 实战共创</div>
           </div>
         </div>
+      </section>
 
-        <div class="text-block">
-          <p class="hero-sub">
-            与同行者一起，用 vibe coding 把想法变成现实。<br />
-            让AI帮你从“工具人”走向 problem solver 与创造者，完成思维和身份的升级。
-          </p>
-
-          <div class="cta-row">
-            <button class="cta-btn cta-primary" type="button">成为早期会员</button>
-            <button class="cta-btn cta-secondary" type="button">了解我们的故事</button>
-          </div>
+      <section class="section container" id="faq">
+        <h3 class="reveal">6 步开启 AI 新旅程</h3>
+        <div class="path-grid">
+          <article class="path-card reveal"><strong>1.</strong> 注册加入</article>
+          <article class="path-card reveal"><strong>2.</strong> 探索课程</article>
+          <article class="path-card reveal"><strong>3.</strong> 参与直播</article>
+          <article class="path-card reveal"><strong>4.</strong> 动手实践</article>
+          <article class="path-card reveal"><strong>5.</strong> 讨论交流</article>
+          <article class="path-card reveal"><strong>6.</strong> 实践成长</article>
         </div>
       </section>
     </main>
 
+    <footer class="footer">
+      <div class="container">© 2026 PathUnfold · 本地迁移预览版（Framer → 自部署）</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script>
-      const OFF_VIDEO = "hero section lighting/关灯效果.mp4";
-      const ON_VIDEO = "hero section lighting/开灯效果video.mp4";
-      const OFF_SWITCH = "hero section lighting/关灯开关.avif";
-      const ON_SWITCH = "hero section lighting/开灯开关.avif";
+      // Hero 灯光交互
+      const lightingScene = document.getElementById("lightingScene");
+      const states = Array.from(lightingScene.querySelectorAll(".lighting-state"));
 
-      let isLightOn = false;
-
-      const video = document.getElementById("lightingVideo");
-      const switchBtn = document.getElementById("switchBtn");
-      const switchImg = document.getElementById("switchImg");
-
-      const setLighting = (turnOn) => {
-        isLightOn = turnOn;
-        const nextVideo = turnOn ? ON_VIDEO : OFF_VIDEO;
-        const nextSwitch = turnOn ? ON_SWITCH : OFF_SWITCH;
-
-        switchImg.src = nextSwitch;
-        switchImg.alt = turnOn ? "开灯开关" : "关灯开关";
-
-        if (video.currentSrc.endsWith(encodeURI(nextVideo))) {
-          return;
-        }
-
-        video.pause();
-        video.src = nextVideo;
-        video.load();
-
-        const playPromise = video.play();
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(() => {});
-        }
+      const playVideo = (video) => {
+        const p = video.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
       };
 
-      switchBtn.addEventListener("click", () => {
-        setLighting(!isLightOn);
+      const setLightingState = (targetState) => {
+        states.forEach((state) => {
+          const video = state.querySelector("video");
+          const active = state.dataset.state === targetState;
+          state.classList.toggle("is-active", active);
+          if (active) {
+            video.currentTime = 0;
+            playVideo(video);
+          } else {
+            video.pause();
+          }
+        });
+      };
+
+      lightingScene.addEventListener("click", (e) => {
+        const trigger = e.target.closest("[data-target-state]");
+        if (!trigger) return;
+        setLightingState(trigger.dataset.targetState);
+      });
+
+      // Framer 风格动效（进入 + 轻滚动）
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from(".hero-title", {
+        y: 28,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      gsap.from(".hero-grid .card", {
+        y: 32,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power2.out"
+      });
+
+      gsap.to("#marqueeTrack", {
+        x: -420,
+        repeat: -1,
+        duration: 14,
+        ease: "none"
+      });
+
+      gsap.utils.toArray(".reveal").forEach((el) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            once: true
+          }
+        });
       });
     </script>
   </body>
