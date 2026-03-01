@@ -912,6 +912,155 @@
         font-family: "Utara Variable", Inter, sans-serif;
       }
 
+      /* ===== SECTION 7: 课程购物车 ===== */
+      #section-7-course-shop {
+        width: 100%;
+        padding: 60px 24px;
+        background: #fdfdfa;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+      }
+      .s7-wrap {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+      .s7-sidebar {
+        width: 300px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 32px;
+      }
+      .s7-cart {
+        border: 1px solid #000;
+        display: flex;
+        flex-direction: column;
+        min-height: 500px;
+        background: #fff;
+        overflow: hidden;
+      }
+      .s7-cart-header { padding: 20px; border-bottom: 1px solid #000; }
+      .s7-cart-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .s7-cart-items {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .s7-empty { font-size: 13px; color: #9ca3af; font-style: italic; text-align: center; padding: 32px 0; }
+      .s7-cart-item { border: 1px solid #000; padding: 10px; background: #f9f9f9; }
+      .s7-cart-item-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+      .s7-cart-item-title {
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 210px;
+      }
+      .s7-remove { border: 0; background: none; cursor: pointer; font-size: 18px; line-height: 1; }
+      .s7-cart-footer { padding: 20px; background: #eee; border-top: 1px solid #000; display: flex; flex-direction: column; gap: 10px; }
+      .s7-total-label { margin: 0; font-size: 13px; font-weight: 900; text-transform: uppercase; }
+      .s7-row { display: flex; justify-content: space-between; font-size: 11px; }
+      .s7-order-total { padding-top: 8px; border-top: 1px dotted #9ca3af; margin-top: 8px; }
+      .s7-checkout {
+        margin-top: 12px;
+        border: 1px solid #000;
+        padding: 14px;
+        font-weight: 800;
+        font-size: 14px;
+        cursor: pointer;
+        background: #ffae4c;
+      }
+      .s7-main { flex: 1; min-width: 320px; }
+      .s7-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; }
+      .s7-title { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.05em; }
+      .s7-filters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+      .s7-filter {
+        padding: 6px 14px;
+        border: 1px solid #000;
+        background: #fff;
+        color: #000;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+      }
+      .s7-filter.is-active { background: #000; color: #fff; }
+      .s7-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-left: 1px solid #000;
+        border-top: 1px solid #000;
+      }
+      .s7-card {
+        background: #fff;
+        border-right: 1px solid #000;
+        border-bottom: 1px solid #000;
+        display: flex;
+        flex-direction: column;
+      }
+      .s7-img-wrap { height: 160px; overflow: hidden; border-bottom: 1px solid #000; position: relative; }
+      .s7-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter .5s ease; }
+      .s7-card:hover .s7-img { filter: grayscale(0); }
+      .s7-tag { position: absolute; top: 12px; left: 12px; background: #fff; border: 1px solid #000; padding: 3px 6px; font-size: 9px; font-weight: 700; }
+      .s7-add {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #000;
+        background: #fff;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .s7-add.is-in { background: #22c55e; color: #fff; }
+      .s7-card-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+      .s7-card-title {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 900;
+        line-height: 1.2;
+        height: 32px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+      .s7-card:hover .s7-card-title { color: #ff7636; }
+      .s7-card-desc {
+        margin: 0;
+        font-size: 11px;
+        color: #6b7280;
+        line-height: 1.5;
+        height: 50px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+
+      @media (max-width: 1200px) {
+        .s7-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 1024px) {
+        .s7-wrap { gap: 20px; }
+        .s7-sidebar { display: none; }
+      }
+
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
         .hero-row { flex-direction: column; }
@@ -1230,6 +1379,35 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 7: 课程购物车 -->
+    <!-- ========================= -->
+    <section id="section-7-course-shop" data-section="7-course-shop">
+      <div class="s7-wrap">
+        <aside class="s7-sidebar">
+          <div class="s7-cart">
+            <div class="s7-cart-header"><h3 class="s7-cart-title">🛒 Shopping Cart</h3></div>
+            <div class="s7-cart-items" id="s7CartItems"></div>
+            <div class="s7-cart-footer">
+              <h4 class="s7-total-label">Total</h4>
+              <div class="s7-row"><span>Items</span><span id="s7ItemsCount">0</span></div>
+              <div class="s7-row"><span>Estimated shipping</span><span style="color:#22c55e;">Free</span></div>
+              <div class="s7-order-total"><div class="s7-row"><span style="font-weight:800;">Order Total</span><span style="font-weight:800;">$ 25/month</span></div></div>
+              <button class="s7-checkout">Checkout</button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="s7-main">
+          <div class="s7-top">
+            <h2 class="s7-title">核心课程</h2>
+            <div class="s7-filters" id="s7Filters"></div>
+          </div>
+          <div class="s7-grid" id="s7Grid"></div>
         </div>
       </div>
     </section>
@@ -1655,9 +1833,92 @@
         s5Track.innerHTML = items.map((city) => `<div class="s5-item">${city}</div>`).join('');
       }
 
+      // SECTION 7：课程购物车
+      const s7Categories = ['所有','核心构建','自动化/AI','设计/UI','影像制作','基础环境'];
+      const s7Courses = [
+        { id: 1, title: '「中高级」AI 应用炼金术：从想法到上架', desc: '从创意落地到商业变现，透过构建 ChatGPT 与 AI 浏览器等实战专案，掌握将想法转化为可获利产品的全套技能。', category: '核心构建', image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800' },
+        { id: 2, title: '「初级以上」iOS app 开发 101', desc: '掌握 iOS 开发的全套标准流程，打造一款具备视觉识别与语音互动能力的智能应用。', category: '核心构建', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800' },
+        { id: 3, title: '「初级以上」打造你的 AI Agent 工具箱', desc: '学习如何整合开源资源与 AI 模型，将普通的资料夹升级为高价值的自动化工具箱。', category: '自动化/AI', image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800' },
+        { id: 4, title: '「入门/初级」n8n 实战', desc: '打破应用程序孤岛，构建自动化内容产线，让数据在不同平台间无缝流转。', category: '自动化/AI', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800' },
+        { id: 5, title: '「入门/初级」Cursor 101 - 制作3个Web App', desc: '系统化掌握 Cursor 的 Vibe Coding 开发模式，实现从零基础到独立上线。', category: '核心构建', image: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800' },
+        { id: 6, title: '「入门」Claude Code · Gemini CLI 101 · Codex CLI', desc: '专为初学者设计的环境搭建指南，快速熟悉与 AI 协作的标准工作流程。', category: '基础环境', image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800' },
+        { id: 7, title: '「初级以上」AI x UI/UX Vibe Coding 介面设计实战', desc: '学习用产品经理的思维定义需求，借助 AI 工具将想法转化为好用的现代化介面。', category: '设计/UI', image: 'https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800' },
+        { id: 8, title: '「入门/初级」零基础做AI动画：1分钟短片创作', desc: '专为初学者设计的影像创作指南：实现从脚本构思到成片输出的影像创作闭环。', category: '影像制作', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800' },
+        { id: 9, title: '「入门/初级」5分钟用Google Stitch快速设计App', desc: '掌握 Google Stitch 与 Brand Style Guide 的核心应用，快速将抽象需求转化为介面原型。', category: '设计/UI', image: 'https://images.unsplash.com/photo-1581291518655-950393b307cb?auto=format&fit=crop&q=80&w=800' },
+        { id: 10, title: '「入门/初级」Github从入门到精通(AI时代版)', desc: '专为 Vibe Coder 设计的 Git 指南：拒绝死记硬背复杂指令，轻松驾驭版本控制。', category: '基础环境', image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&q=80&w=1600' },
+        { id: 11, title: '「入门/初级」MCP 101 - 让你的 AI 可以使用各种工具', desc: '教你如何为 AI 装上手脚，让你的 AI 助手具备读取代码库与调用外部服务能力。', category: '自动化/AI', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800' },
+        { id: 12, title: '「入门/初级」零门槛用AI做影片：工具与实操案例分享', desc: '系统化掌握 AI 影片生成的三大核心工作流，实现低成本高质感的影像创作。', category: '影像制作', image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=800' },
+        { id: 13, title: '「初级以上」OpenClaw 打造属于你自己的 Siri 个人助理', desc: '在 Slack 和 Discord 上搭建你的专属 AI 个人助理，实现语音交互和自动化工作流。', category: '自动化/AI', image: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&q=80&w=800' },
+        { id: 14, title: '「入门/初级」Windows系统Vibe Coding专区', desc: '专为 Windows 用户打造的实战指南：整合工具与专属配置流程，构建高效开发环境。', category: '基础环境', image: 'https://images.unsplash.com/photo-1541462608141-d75af71a5765?auto=format&fit=crop&q=80&w=800' },
+        { id: 15, title: 'Quick Courses 快速课程', desc: '打破系统课程更新限制，紧跟 AI 时事与新工具。每节课解决一个具体问题。', category: '基础环境', image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800' }
+      ];
+      let s7Cart = [];
+      let s7ActiveCategory = '所有';
+
+      const s7Filters = document.getElementById('s7Filters');
+      const s7Grid = document.getElementById('s7Grid');
+      const s7CartItems = document.getElementById('s7CartItems');
+      const s7ItemsCount = document.getElementById('s7ItemsCount');
+
+      function s7Toggle(courseId) {
+        const c = s7Courses.find(x => x.id === courseId);
+        if (!c) return;
+        if (s7Cart.find(i => i.id === courseId)) s7Cart = s7Cart.filter(i => i.id !== courseId);
+        else s7Cart.push(c);
+        renderS7();
+      }
+
+      function s7Filtered() {
+        return s7ActiveCategory === '所有' ? s7Courses : s7Courses.filter(c => c.category === s7ActiveCategory);
+      }
+
+      function renderS7() {
+        s7Filters.innerHTML = s7Categories.map(cat => `<button class="s7-filter ${cat===s7ActiveCategory?'is-active':''}" data-cat="${cat}">${cat}</button>`).join('');
+
+        s7Grid.innerHTML = s7Filtered().map(course => {
+          const inCart = !!s7Cart.find(i => i.id === course.id);
+          return `
+            <article class="s7-card">
+              <div class="s7-img-wrap">
+                <img class="s7-img" src="${course.image}" alt="${course.title}"/>
+                <span class="s7-tag">${course.category}</span>
+                <button class="s7-add ${inCart?'is-in':''}" data-add="${course.id}" aria-label="add">${inCart ? '✓' : '🛒'}</button>
+              </div>
+              <div class="s7-card-body">
+                <h3 class="s7-card-title">${course.title}</h3>
+                <p class="s7-card-desc">${course.desc}</p>
+              </div>
+            </article>`;
+        }).join('');
+
+        if (!s7Cart.length) {
+          s7CartItems.innerHTML = `<p class="s7-empty">Your cart is empty.</p>`;
+        } else {
+          s7CartItems.innerHTML = s7Cart.map(item => `
+            <div class="s7-cart-item">
+              <div class="s7-cart-item-row">
+                <span class="s7-cart-item-title">${item.title}</span>
+                <button class="s7-remove" data-remove="${item.id}" aria-label="remove">×</button>
+              </div>
+            </div>
+          `).join('');
+        }
+        s7ItemsCount.textContent = String(s7Cart.length);
+      }
+
+      document.addEventListener('click', (e) => {
+        const f = e.target.closest('.s7-filter');
+        if (f) { s7ActiveCategory = f.dataset.cat; renderS7(); return; }
+        const a = e.target.closest('[data-add]');
+        if (a) { s7Toggle(Number(a.dataset.add)); return; }
+        const r = e.target.closest('[data-remove]');
+        if (r) { s7Cart = s7Cart.filter(i => i.id !== Number(r.dataset.remove)); renderS7(); }
+      });
+
       renderMap();
       renderPie();
       renderTicker();
+      renderS7();
     </script>
   </body>
 </html>
