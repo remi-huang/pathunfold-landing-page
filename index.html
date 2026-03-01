@@ -423,6 +423,165 @@
         background: #fff;
       }
 
+      /* ===== SECTION 3: Meet Your Fellow ===== */
+      #section-3-meet-fellow {
+        width: 100%;
+        padding: 30px 100px 80px;
+        background: #fdfdfa;
+        display: flex;
+        justify-content: center;
+      }
+      .s3-wrap {
+        width: 1200px;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .slot-machine {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .slot-body {
+        width: 650px;
+        height: 320px;
+        border-radius: 10px;
+        border: 1px solid #000;
+        background: #ededE8;
+        padding: 20px 20px 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+      .slot-dot-row {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 12px;
+        margin-bottom: 12px;
+      }
+      .slot-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+      }
+      .slot-header {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        margin: 30px 0;
+        font-family: "Utara Variable", Inter, sans-serif;
+      }
+      .slot-container {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        height: 130px;
+        border-top: 1px solid #000;
+        padding-top: 24px;
+        margin-top: 10px;
+      }
+      .slot-window {
+        flex: 1;
+        height: 100%;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+      .slot-highlight-top,
+      .slot-highlight-bottom {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 22px;
+        background: #f5f5f3;
+        z-index: 0;
+      }
+      .slot-highlight-top { top: 0; }
+      .slot-highlight-bottom { bottom: 0; }
+      .slot-gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+        z-index: 4;
+        pointer-events: none;
+      }
+      .slot-inner { width: 100%; height: 100%; overflow: hidden; z-index: 2; position: relative; }
+      .slot-scroll { width: 100%; transform: translateY(0); }
+      .slot-item {
+        width: 100%;
+        height: 106px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 800;
+        text-align: center;
+        padding: 0 15px;
+        flex-shrink: 0;
+      }
+      .slot-bezel-top,
+      .slot-bezel-bottom {
+        position: absolute;
+        left: 50%;
+        width: 100px;
+        height: 8px;
+        background: #000;
+        transform: translateX(-50%);
+        z-index: 6;
+      }
+      .slot-bezel-top { top: 0; border-radius: 0 0 6px 6px; }
+      .slot-bezel-bottom { bottom: 0; border-radius: 6px 6px 0 0; }
+      .slot-lever-track {
+        width: 60px;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        z-index: 1;
+      }
+      .slot-lever-base {
+        width: 40px;
+        height: 14px;
+        background: #fff;
+        border: 1px solid #000;
+        border-left: none;
+        border-radius: 0 7px 7px 0;
+        position: relative;
+        left: -2.5px;
+      }
+      .slot-lever-arm {
+        position: absolute;
+        left: 10px;
+        bottom: calc(50% + 3px);
+        transform-origin: bottom center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 5;
+        cursor: pointer;
+      }
+      .slot-lever-ball {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid #000;
+        margin-bottom: -2.5px;
+        background: #ff5959;
+      }
+      .slot-lever-stick {
+        width: 12px;
+        height: 90px;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 6px;
+        margin-bottom: -7px;
+      }
+
       @media (max-width: 1200px) {
         .hero-shell { padding: 48px 20px; }
         .hero-kicker, .hero-title { font-size: 72px; }
@@ -434,6 +593,10 @@
         .s2-title-box { width: 470px; height: 50px; }
         .s2-title-highlight { left: 205px; width: 210px; height: 46px; }
         .s2-title { font-size: 34px; }
+
+        #section-3-meet-fellow { padding: 24px 20px 50px; }
+        .slot-body { transform: scale(.9); transform-origin: center; }
+      
       }
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
@@ -450,6 +613,12 @@
         .s2-tabbar { grid-template-columns: 1fr 1fr; }
         .s2-content { grid-template-columns: 1fr; }
         .s2-left { border-right: 0; border-bottom: 1px solid #b7b8b4; }
+
+        #section-3-meet-fellow { padding: 18px 14px 40px; }
+        .slot-machine { width: 100%; justify-content: center; }
+        .slot-body { width: 100%; max-width: 650px; transform: none; }
+        .slot-header { font-size: 26px; margin: 20px 0; }
+        .slot-lever-track { display: none; }
       }
     </style>
   </head>
@@ -572,6 +741,56 @@
                 <source id="s2CardVideoSource" src="assets/videos/course-101.mp4" type="video/mp4" />
               </video>
             </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 3: Meet Your Fellow -->
+    <!-- ========================= -->
+    <section id="section-3-meet-fellow" data-section="3-meet-fellow">
+      <div class="s3-wrap">
+        <div class="slot-machine" id="slotMachine">
+          <div class="slot-body">
+            <div class="slot-dot-row" id="slotDotRowTop"></div>
+            <div class="slot-header">MEET YOUR FELLOW</div>
+            <div class="slot-dot-row" id="slotDotRowBottom"></div>
+
+            <div class="slot-container">
+              <div class="slot-window">
+                <div class="slot-highlight-top"></div>
+                <div class="slot-highlight-bottom"></div>
+                <div class="slot-gradient-overlay"></div>
+                <div class="slot-inner"><div class="slot-scroll" id="slotScroll0"></div></div>
+                <div class="slot-bezel-top"></div>
+                <div class="slot-bezel-bottom"></div>
+              </div>
+              <div class="slot-window">
+                <div class="slot-highlight-top"></div>
+                <div class="slot-highlight-bottom"></div>
+                <div class="slot-gradient-overlay"></div>
+                <div class="slot-inner"><div class="slot-scroll" id="slotScroll1"></div></div>
+                <div class="slot-bezel-top"></div>
+                <div class="slot-bezel-bottom"></div>
+              </div>
+              <div class="slot-window">
+                <div class="slot-highlight-top"></div>
+                <div class="slot-highlight-bottom"></div>
+                <div class="slot-gradient-overlay"></div>
+                <div class="slot-inner"><div class="slot-scroll" id="slotScroll2"></div></div>
+                <div class="slot-bezel-top"></div>
+                <div class="slot-bezel-bottom"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="slot-lever-track">
+            <div class="slot-lever-base"></div>
+            <div class="slot-lever-arm" id="slotLever" role="button" aria-label="启动老虎机" tabindex="0">
+              <div class="slot-lever-ball"></div>
+              <div class="slot-lever-stick"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -727,6 +946,81 @@
         const btn = e.target.closest('.s2-tab');
         if (!btn) return;
         renderS2(btn.dataset.tab);
+      });
+
+      // SECTION 3 交互：Meet Your Fellow 老虎机
+      const OCCUPATIONS = [
+        '70岁退休教师','外科医生','全职妈妈','3D 艺术家','视觉特效师','工厂主','供应链经理','室内设计师','土木工程师','结构工程师','建筑师','灯光设计师','律师','移民律师','投资银行家','加密货币交易员','普通外科医生','肾脏科医生','职业治疗师','药剂师','视频创作者','播客主持人','本地化专家','大学教授','博士生','数字游民','斜杠青年','独立开发者','纺织品制造商','物流规划师','机械工程师','电气工程师','能源工程师','电商卖家','时尚品牌主理人','面包店主','便利店主','注册会计师','精算师','审计师','税务顾问','人力资源经理','招聘专员','行政助理','UI/UX 设计师','产品设计师','时装设计师','时尚博主','翻译官','高中教师','语言导师','教育科技创始人','硕士生','Gap Year 探索者'
+      ];
+
+      const slotSpeed = 2000;
+      const itemHeight = 106;
+      const slotScrollEls = [0,1,2].map(i => document.getElementById(`slotScroll${i}`));
+      const slotLever = document.getElementById('slotLever');
+      let isSpinning = false;
+      let slotResults = ['70岁退休教师','外科医生','全职妈妈'];
+      let prevTargets = [...slotResults];
+
+      function randomOccupation() {
+        return OCCUPATIONS[Math.floor(Math.random() * OCCUPATIONS.length)];
+      }
+
+      function fillDotRow(id) {
+        const row = document.getElementById(id);
+        row.innerHTML = Array.from({ length: 18 })
+          .map((_, i) => `<span class="slot-dot" style="background:${i % 2 === 0 ? '#ED9B2C' : '#fff'}"></span>`)
+          .join('');
+      }
+
+      function renderSlotStatic() {
+        slotScrollEls.forEach((el, i) => {
+          el.style.transform = 'translateY(0px)';
+          el.innerHTML = `<div class="slot-item">${slotResults[i]}</div>`;
+        });
+      }
+
+      function spinLeverAnim() {
+        slotLever.animate(
+          [{ transform: 'rotate(0deg)' }, { transform: 'rotate(40deg)' }, { transform: 'rotate(0deg)' }],
+          { duration: 400, easing: 'ease-in-out' }
+        );
+      }
+
+      function spinSlots() {
+        if (isSpinning) return;
+        isSpinning = true;
+        spinLeverAnim();
+
+        const nextResults = [randomOccupation(), randomOccupation(), randomOccupation()];
+
+        slotScrollEls.forEach((el, i) => {
+          const randomList = Array.from({ length: 30 }).map(randomOccupation);
+          const list = [nextResults[i], ...randomList, prevTargets[i]];
+          el.innerHTML = list.map(item => `<div class="slot-item">${item}</div>`).join('');
+          const startY = -((list.length - 1) * itemHeight);
+          el.style.transition = 'none';
+          el.style.filter = 'blur(0px)';
+          el.style.transform = `translateY(${startY}px)`;
+          void el.offsetHeight;
+          el.style.transition = `transform ${slotSpeed}ms cubic-bezier(0.1,0.45,0.1,1), filter ${slotSpeed}ms ease`;
+          el.style.filter = 'blur(2px)';
+          el.style.transform = 'translateY(0px)';
+          setTimeout(() => { el.style.filter = 'blur(0px)'; }, slotSpeed * 0.85);
+        });
+
+        setTimeout(() => {
+          isSpinning = false;
+          slotResults = nextResults;
+          prevTargets = [...nextResults];
+        }, slotSpeed);
+      }
+
+      fillDotRow('slotDotRowTop');
+      fillDotRow('slotDotRowBottom');
+      renderSlotStatic();
+      slotLever.addEventListener('click', spinSlots);
+      slotLever.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); spinSlots(); }
       });
     </script>
   </body>
