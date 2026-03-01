@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PathUnfold Landing</title>
+    <style>
+      :root {
+        --bg: #f1f1f1;
+        --text: #111;
+        --muted: #3b3b3b;
+        --line: #d8d8d8;
+        --brand: #e59c24;
+        --brand-dark: #b97812;
+        --nav-height: 90px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .topbar {
+        height: var(--nav-height);
+        border-bottom: 2px solid var(--line);
+        background: #f6f6f6;
+      }
+
+      .topbar-inner {
+        max-width: 1680px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 56px;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      .brand-mark {
+        width: 54px;
+        height: 54px;
+        border-right: 1px solid #ddd;
+        padding-right: 18px;
+        display: grid;
+        place-items: center;
+      }
+
+      .brand-mark::before {
+        content: "⬡";
+        color: #b18f59;
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 34px;
+        font-size: 38px;
+        font-weight: 500;
+      }
+
+      .nav-links a {
+        color: #1e1e1e;
+        text-decoration: none;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .join-btn {
+        min-width: 148px;
+        height: 48px;
+        padding: 0 24px;
+        border-radius: 8px;
+        border: 2px solid var(--brand-dark);
+        background: var(--brand);
+        color: #111;
+        font-size: 31px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border: 2px solid #111;
+        border-radius: 50%;
+        position: relative;
+      }
+
+      .avatar::before,
+      .avatar::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 2px solid #111;
+        border-radius: 999px;
+      }
+
+      .avatar::before {
+        top: 8px;
+        width: 12px;
+        height: 12px;
+      }
+
+      .avatar::after {
+        top: 24px;
+        width: 20px;
+        height: 10px;
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+        border-bottom: 0;
+      }
+
+      .hero {
+        max-width: 1680px;
+        margin: 0 auto;
+        min-height: calc(100vh - var(--nav-height));
+        padding: 60px 56px 72px;
+      }
+
+      .hero-title {
+        margin: 22px 0 34px;
+        font-size: clamp(56px, 7.2vw, 146px);
+        line-height: 1.08;
+        letter-spacing: 0.01em;
+        font-weight: 900;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 52px;
+        align-items: center;
+      }
+
+      .visual-wrap {
+        position: relative;
+        width: 100%;
+      }
+
+      .lighting-frame {
+        width: 100%;
+        max-width: 690px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 10;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #ececec;
+      }
+
+      .lighting-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        background: #ececec;
+      }
+
+      .lighting-switch {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-36%);
+        width: clamp(48px, 7vw, 74px);
+        height: clamp(94px, 12vw, 138px);
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .lighting-switch img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .text-block {
+        max-width: 860px;
+      }
+
+      .hero-sub {
+        margin: 0;
+        font-size: clamp(24px, 2.05vw, 44px);
+        line-height: 1.6;
+        color: #202020;
+      }
+
+      .cta-row {
+        margin-top: 58px;
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+      }
+
+      .cta-btn {
+        height: 64px;
+        min-width: 252px;
+        padding: 0 28px;
+        border-radius: 10px;
+        font-size: clamp(22px, 1.45vw, 30px);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .cta-primary {
+        border: 2px solid var(--brand-dark);
+        background: var(--brand);
+        color: #111;
+      }
+
+      .cta-secondary {
+        border: 2px solid #c27f18;
+        background: #f6f6f6;
+        color: #5a5a5a;
+      }
+
+      @media (max-width: 1180px) {
+        .topbar-inner {
+          padding: 0 20px;
+        }
+
+        .nav-links {
+          font-size: 26px;
+          gap: 20px;
+        }
+
+        .join-btn {
+          font-size: 20px;
+          min-width: 112px;
+          height: 40px;
+        }
+
+        .hero {
+          padding: 34px 20px 54px;
+        }
+
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 38px;
+        }
+
+        .lighting-switch {
+          left: 0;
+          transform: translateY(-50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="nav-left">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <nav class="nav-links" aria-label="主导航">
+            <a href="#">社区</a>
+            <a href="#">课程</a>
+            <a href="#">FAQ</a>
+          </nav>
+        </div>
+        <div class="nav-right">
+          <button class="join-btn" type="button">加入我们</button>
+          <div class="avatar" aria-hidden="true"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero">
+      <h1 class="hero-title">用AI「发电」<br />拥抱你的新身份</h1>
+
+      <section class="hero-grid">
+        <div class="visual-wrap">
+          <button class="lighting-switch" id="switchBtn" type="button" aria-label="切换灯光">
+            <img id="switchImg" src="hero section lighting/关灯开关.avif" alt="关灯开关" />
+          </button>
+
+          <div class="lighting-frame">
+            <video
+              id="lightingVideo"
+              class="lighting-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="hero section lighting/关灯效果.mp4" type="video/mp4" />
+              您的浏览器不支持视频播放
+            </video>
+          </div>
+        </div>
+
+        <div class="text-block">
+          <p class="hero-sub">
+            与同行者一起，用 vibe coding 把想法变成现实。<br />
+            让AI帮你从“工具人”走向 problem solver 与创造者，完成思维和身份的升级。
+          </p>
+
+          <div class="cta-row">
+            <button class="cta-btn cta-primary" type="button">成为早期会员</button>
+            <button class="cta-btn cta-secondary" type="button">了解我们的故事</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const OFF_VIDEO = "hero section lighting/关灯效果.mp4";
+      const ON_VIDEO = "hero section lighting/开灯效果video.mp4";
+      const OFF_SWITCH = "hero section lighting/关灯开关.avif";
+      const ON_SWITCH = "hero section lighting/开灯开关.avif";
+
+      let isLightOn = false;
+
+      const video = document.getElementById("lightingVideo");
+      const switchBtn = document.getElementById("switchBtn");
+      const switchImg = document.getElementById("switchImg");
+
+      const setLighting = (turnOn) => {
+        isLightOn = turnOn;
+        const nextVideo = turnOn ? ON_VIDEO : OFF_VIDEO;
+        const nextSwitch = turnOn ? ON_SWITCH : OFF_SWITCH;
+
+        switchImg.src = nextSwitch;
+        switchImg.alt = turnOn ? "开灯开关" : "关灯开关";
+
+        if (video.currentSrc.endsWith(encodeURI(nextVideo))) {
+          return;
+        }
+
+        video.pause();
+        video.src = nextVideo;
+        video.load();
+
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {});
+        }
+      };
+
+      switchBtn.addEventListener("click", () => {
+        setLighting(!isLightOn);
+      });
+    </script>
+  </body>
+</html>
