@@ -3,510 +3,303 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PathUnfold — 用 AI 发电</title>
-    <meta
-      name="description"
-      content="拥抱你的新身份，与同行者一起用 vibe coding 把想法变成现实。"
-    />
-
+    <title>PathUnfold Hero Pixel Pass</title>
     <style>
       :root {
-        --bg: #f8f6f1;
-        --paper: #fffdf8;
-        --text: #101010;
-        --muted: #525252;
-        --line: #d8d4ca;
-        --brand: #e8a83e;
-        --brand-dark: #ad6e11;
-        --radius: 18px;
+        --bg: #fdfefa;
+        --text: #000;
+        --btn-top: rgb(237, 155, 44);
+        --btn-bottom: rgb(206, 131, 6);
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
+      * { box-sizing: border-box; }
       body {
         margin: 0;
-        background: radial-gradient(circle at 20% -10%, #fff4da 0, transparent 50%), var(--bg);
+        background: var(--bg);
         color: var(--text);
-        font-family: "PingFang SC", "Noto Sans SC", "Inter", "Microsoft YaHei", sans-serif;
-        scroll-behavior: smooth;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .container {
-        width: min(1200px, 92vw);
-        margin: 0 auto;
-      }
-
-      .site-header {
+      /* ===== Header (按 Framer 桌面值) ===== */
+      .header {
         position: sticky;
         top: 0;
-        z-index: 100;
-        backdrop-filter: blur(10px);
-        background: rgba(248, 246, 241, 0.78);
-        border-bottom: 1px solid var(--line);
-      }
-
-      .nav {
-        height: 76px;
+        z-index: 20;
+        width: 100%;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-      }
-
-      .brand {
-        display: flex;
         align-items: center;
-        gap: 12px;
-        font-weight: 700;
+        padding: 10px 40px;
+        background: #fdfefa;
+        box-shadow: 0 1px 2px #00000040;
       }
-
-      .brand-mark {
-        width: 34px;
-        height: 34px;
+      .header-left { display: flex; align-items: center; gap: 20px; }
+      .logo {
+        width: 48px;
+        height: 48px;
         border-radius: 10px;
-        background: linear-gradient(145deg, #f9c772, #ce8414);
-        box-shadow: 0 10px 20px rgba(173, 110, 17, 0.24);
+        overflow: hidden;
+        flex: none;
       }
+      .logo img { width: 100%; height: 100%; object-fit: cover; }
+      .nav { display: flex; gap: 20px; font-size: 14px; }
 
-      .nav-links {
-        display: flex;
-        gap: 30px;
-        color: #222;
-      }
-
-      .btn {
-        border: 0;
-        border-radius: 12px;
-        padding: 12px 18px;
-        font-weight: 700;
+      .header-right { display: flex; align-items: center; gap: 22px; }
+      .btn-wrap {
         cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        width: 95px;
+        height: 34px;
+        position: relative;
+        flex: none;
+      }
+      .btn-base,
+      .btn-top {
+        width: 95px;
+        height: 28px;
+        border-radius: 5px;
+        border: 1px solid rgb(165, 125, 55);
+        position: absolute;
+        left: 0;
+      }
+      .btn-base { bottom: 0; background: var(--btn-bottom); }
+      .btn-top {
+        top: 0;
+        border-color: rgb(179, 121, 25);
+        background: var(--btn-top);
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 700;
       }
 
-      .btn:hover {
-        transform: translateY(-1px);
+      .avatar {
+        width: 22px;
+        height: 22px;
+        border: 1.5px solid #111;
+        border-radius: 50%;
+        position: relative;
+      }
+      .avatar::before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border: 1.5px solid #111;
+        border-radius: 50%;
+        left: 50%;
+        top: 3px;
+        transform: translateX(-50%);
       }
 
-      .btn-primary {
-        background: linear-gradient(180deg, #f6bf62, var(--brand));
-        color: #141414;
-        box-shadow: 0 10px 20px rgba(173, 110, 17, 0.24);
+      /* ===== Hero (按抓到的关键尺寸) ===== */
+      .hero-shell {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 80px 0 50px 100px;
+        background: #fdfdfa;
+      }
+      .hero-inner {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 70px;
       }
 
-      .btn-secondary {
-        background: #fff;
-        border: 1px solid #d3c9b8;
+      .hero-kicker {
+        font-family: "Utara Variable", Inter, sans-serif;
+        font-size: 100px;
+        font-weight: 1000;
+        line-height: 1;
+        margin: 0;
       }
 
-      .hero {
-        padding: 58px 0 40px;
+      .hero-row {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 91px;
+      }
+
+      .hero-left {
+        flex: 1 0 0;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lighting {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+      }
+      .switch {
+        width: 41px;
+        height: 388px;
+        cursor: pointer;
+        flex: none;
+        overflow: visible;
+      }
+      .switch img { width: 100%; height: 100%; object-fit: cover; }
+      .video-box {
+        width: 382px;
+        height: 382px;
+        position: relative;
+        flex: none;
+      }
+      .video-box video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background: transparent;
+      }
+
+      .hero-right {
+        width: min-content;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 19px;
       }
 
       .hero-title {
-        margin: 0 0 26px;
-        font-size: clamp(42px, 7vw, 92px);
-        line-height: 1.05;
-        letter-spacing: -0.02em;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.05fr 1fr;
-        gap: 24px;
-        align-items: stretch;
-      }
-
-      .card {
-        background: var(--paper);
-        border: 1px solid #e4dfd5;
-        border-radius: var(--radius);
-        overflow: hidden;
-      }
-
-      .lighting-scene {
-        position: relative;
-        min-height: 500px;
-      }
-
-      .lighting-state {
-        display: none;
-        height: 100%;
-        grid-template-columns: 78px 1fr;
-      }
-
-      .lighting-state.is-active {
-        display: grid;
-      }
-
-      .lighting-switch {
-        border: 0;
-        background: transparent;
-        padding: 16px 10px;
-        cursor: pointer;
-      }
-
-      .lighting-switch img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .lighting-media {
-        min-height: 500px;
-      }
-
-      .lighting-video {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        background: #f3f0e8;
-      }
-
-      .hero-copy {
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .hero-copy h2 {
+        font-family: "Utara Variable", Inter, sans-serif;
+        font-size: 100px;
+        font-weight: 1000;
+        line-height: 1;
         margin: 0;
-        font-size: clamp(34px, 5vw, 62px);
-        line-height: 1.08;
-      }
-
-      .hero-copy p {
-        margin: 16px 0 28px;
-        color: var(--muted);
-        font-size: clamp(16px, 1.7vw, 22px);
-        line-height: 1.65;
-      }
-
-      .cta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .marquee-wrap {
-        margin: 32px 0 8px;
-        border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-        background: #fff8ea;
-        overflow: hidden;
-      }
-
-      .marquee {
-        display: flex;
-        width: max-content;
-        gap: 34px;
-        padding: 12px 0;
         white-space: nowrap;
-        font-weight: 700;
-        color: #5e4c2e;
       }
-
-      .section {
-        padding: 66px 0;
+      .hero-desc {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        white-space: nowrap;
       }
-
-      .section h3 {
-        margin: 0 0 20px;
-        font-size: clamp(28px, 4vw, 44px);
+      .hero-actions {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+        padding: 2px 0;
       }
-
-      .path-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .path-card {
-        padding: 22px;
-        border-radius: 16px;
-        border: 1px solid #e0d9cb;
+      .btn-ghost .btn-top {
         background: #fff;
+        color: #5c5c5c;
       }
 
-      .path-card .tag {
-        display: inline-block;
-        margin-bottom: 10px;
-        font-size: 12px;
-        border: 1px solid #e3d9c4;
-        border-radius: 999px;
-        padding: 4px 10px;
-        color: #7c6439;
+      .placeholder {
+        height: 1200px;
       }
 
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
+      @media (max-width: 1200px) {
+        .hero-shell { padding: 48px 20px; }
+        .hero-kicker, .hero-title { font-size: 72px; }
+        .hero-row { gap: 40px; }
       }
-
-      .stat {
-        background: #fff;
-        border: 1px solid #e0d9cb;
-        border-radius: 16px;
-        padding: 18px;
-      }
-
-      .stat .num {
-        font-size: clamp(26px, 3.4vw, 42px);
-        font-weight: 800;
-      }
-
-      .footer {
-        border-top: 1px solid var(--line);
-        padding: 24px 0 40px;
-        color: #666;
-        font-size: 14px;
-      }
-
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-
-      @media (max-width: 980px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .lighting-scene,
-        .lighting-media {
-          min-height: 380px;
-        }
-
-        .path-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .stats {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+      @media (max-width: 900px) {
+        .header { padding: 10px 16px; }
+        .hero-row { flex-direction: column; }
+        .hero-kicker, .hero-title { font-size: 48px; white-space: normal; }
+        .hero-desc { white-space: normal; }
       }
     </style>
   </head>
-
   <body>
-    <header class="site-header">
-      <div class="container nav">
-        <div class="brand">
-          <div class="brand-mark" aria-hidden="true"></div>
-          <span>PathUnfold</span>
+    <header class="header">
+      <div class="header-left">
+        <div class="logo">
+          <img src="https://framerusercontent.com/images/EaDMzcIudOA0yZYNPkHpGE68ig.png?width=500&height=500" alt="logo" />
         </div>
-
-        <nav class="nav-links" aria-label="主导航">
-          <a href="#community">社区</a>
-          <a href="#courses">课程</a>
-          <a href="#faq">FAQ</a>
+        <nav class="nav">
+          <span>社区</span>
+          <span>课程</span>
+          <span>FAQ</span>
         </nav>
-
-        <button class="btn btn-primary" type="button">加入我们</button>
+      </div>
+      <div class="header-right">
+        <div class="btn-wrap">
+          <div class="btn-base"></div>
+          <div class="btn-top">加入我们</div>
+        </div>
+        <div class="avatar"></div>
       </div>
     </header>
 
-    <main>
-      <section class="hero container">
-        <h1 class="hero-title reveal">用 AI「发电」</h1>
+    <main class="hero-shell">
+      <section class="hero-inner">
+        <h1 class="hero-kicker">用AI「发电」</h1>
 
-        <div class="hero-grid">
-          <div class="card lighting-scene reveal" id="lightingScene">
-            <div class="lighting-state is-active" data-state="off">
-              <button class="lighting-switch" type="button" data-target-state="on" aria-label="开灯">
-                <img src="hero section lighting/关灯开关.avif" alt="开灯按钮" />
+        <div class="hero-row">
+          <div class="hero-left">
+            <div class="lighting" id="lighting">
+              <button class="switch" id="toggleBtn" aria-label="切换灯光" style="border:0;background:transparent;padding:0;">
+                <img id="switchImg" src="hero section lighting/关灯开关.avif" alt="开关" />
               </button>
-              <div class="lighting-media">
-                <video class="lighting-video" autoplay muted loop playsinline preload="metadata">
+              <div class="video-box">
+                <video id="offVideo" autoplay muted loop playsinline preload="metadata">
                   <source src="hero section lighting/关灯效果.mp4" type="video/mp4" />
                 </video>
-              </div>
-            </div>
-
-            <div class="lighting-state" data-state="on">
-              <button class="lighting-switch" type="button" data-target-state="off" aria-label="关灯">
-                <img src="hero section lighting/开灯开关.avif" alt="关灯按钮" />
-              </button>
-              <div class="lighting-media">
-                <video class="lighting-video" muted loop playsinline preload="metadata">
+                <video id="onVideo" muted loop playsinline preload="metadata" style="display:none;">
                   <source src="hero section lighting/开灯效果video.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>
           </div>
 
-          <article class="card hero-copy reveal">
-            <div>
-              <h2>拥抱你的新身份</h2>
-              <p>
-                与同行者一起，用 vibe coding 把想法变成现实。让 AI 帮你从“工具人”走向
-                problem solver 与创造者，完成思维和身份的升级。
-              </p>
+          <div class="hero-right">
+            <h2 class="hero-title">拥抱你的新身份</h2>
+            <p class="hero-desc">与同行者一起，用 vibe coding 把想法变成现实。<br />让AI帮你从“工具人”走向 problem solver 与创造者，完成思维和身份的升级。</p>
+            <div class="hero-actions">
+              <div class="btn-wrap">
+                <div class="btn-base"></div>
+                <div class="btn-top">成为早期会员</div>
+              </div>
+              <div class="btn-wrap btn-ghost">
+                <div class="btn-base"></div>
+                <div class="btn-top">了解我们的故事</div>
+              </div>
             </div>
-
-            <div class="cta-row">
-              <button class="btn btn-primary" type="button">成为早期会员</button>
-              <button class="btn btn-secondary" type="button">了解我们的故事</button>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <div class="marquee-wrap">
-        <div class="marquee" id="marqueeTrack">
-          <span>NEW! OpenClaw 打造属于你自己的 Siri 个人助理</span>
-          <span>Cursor 101 - 制作 3 个 Web App</span>
-          <span>Claude Code · Gemini CLI · Codex CLI 101</span>
-          <span>MCP 101 - 让你的 AI 使用各种工具</span>
-          <span>NEW! OpenClaw 打造属于你自己的 Siri 个人助理</span>
-          <span>Cursor 101 - 制作 3 个 Web App</span>
-        </div>
-      </div>
-
-      <section class="section container" id="courses">
-        <h3 class="reveal">找到属于你的 Vibe Coding 路径</h3>
-
-        <div class="path-grid">
-          <article class="path-card reveal">
-            <span class="tag">从零开始</span>
-            <h4>我是完全新手 · The Vibe Coder</h4>
-            <p>没有编程背景？这正是你的优势。我们会教你如何用自然语言驱动 AI。</p>
-          </article>
-
-          <article class="path-card reveal">
-            <span class="tag">构建产品</span>
-            <h4>从创意到上架</h4>
-            <p>通过 ChatGPT、AI 浏览器等实战项目，把灵感转化为可用产品。</p>
-          </article>
-
-          <article class="path-card reveal">
-            <span class="tag">自动化</span>
-            <h4>打造你的 AI 工具箱</h4>
-            <p>将日常流程自动化，搭建可持续迭代的个人工作流系统。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section container" id="community">
-        <h3 class="reveal">分布在全球的创作者社区</h3>
-        <div class="stats">
-          <div class="stat reveal">
-            <div class="num">1800+</div>
-            <div>社群成员</div>
           </div>
-          <div class="stat reveal">
-            <div class="num">260+</div>
-            <div>覆盖城市</div>
-          </div>
-          <div class="stat reveal">
-            <div class="num">90%</div>
-            <div>非技术背景</div>
-          </div>
-          <div class="stat reveal">
-            <div class="num">每周</div>
-            <div>直播 + 实战共创</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section container" id="faq">
-        <h3 class="reveal">6 步开启 AI 新旅程</h3>
-        <div class="path-grid">
-          <article class="path-card reveal"><strong>1.</strong> 注册加入</article>
-          <article class="path-card reveal"><strong>2.</strong> 探索课程</article>
-          <article class="path-card reveal"><strong>3.</strong> 参与直播</article>
-          <article class="path-card reveal"><strong>4.</strong> 动手实践</article>
-          <article class="path-card reveal"><strong>5.</strong> 讨论交流</article>
-          <article class="path-card reveal"><strong>6.</strong> 实践成长</article>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">© 2026 PathUnfold · 本地迁移预览版（Framer → 自部署）</div>
-    </footer>
+    <div class="placeholder"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script>
-      // Hero 灯光交互
-      const lightingScene = document.getElementById("lightingScene");
-      const states = Array.from(lightingScene.querySelectorAll(".lighting-state"));
+      const toggleBtn = document.getElementById('toggleBtn');
+      const switchImg = document.getElementById('switchImg');
+      const offVideo = document.getElementById('offVideo');
+      const onVideo = document.getElementById('onVideo');
+      let on = false;
 
-      const playVideo = (video) => {
-        const p = video.play();
-        if (p && typeof p.catch === "function") p.catch(() => {});
-      };
+      function safePlay(v) {
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      }
 
-      const setLightingState = (targetState) => {
-        states.forEach((state) => {
-          const video = state.querySelector("video");
-          const active = state.dataset.state === targetState;
-          state.classList.toggle("is-active", active);
-          if (active) {
-            video.currentTime = 0;
-            playVideo(video);
-          } else {
-            video.pause();
-          }
-        });
-      };
-
-      lightingScene.addEventListener("click", (e) => {
-        const trigger = e.target.closest("[data-target-state]");
-        if (!trigger) return;
-        setLightingState(trigger.dataset.targetState);
-      });
-
-      // Framer 风格动效（进入 + 轻滚动）
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.from(".hero-title", {
-        y: 28,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      });
-
-      gsap.from(".hero-grid .card", {
-        y: 32,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: "power2.out"
-      });
-
-      gsap.to("#marqueeTrack", {
-        x: -420,
-        repeat: -1,
-        duration: 14,
-        ease: "none"
-      });
-
-      gsap.utils.toArray(".reveal").forEach((el) => {
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            once: true
-          }
-        });
+      toggleBtn.addEventListener('click', () => {
+        on = !on;
+        if (on) {
+          switchImg.src = 'hero section lighting/开灯开关.avif';
+          offVideo.style.display = 'none';
+          onVideo.style.display = 'block';
+          onVideo.currentTime = 0;
+          safePlay(onVideo);
+          offVideo.pause();
+        } else {
+          switchImg.src = 'hero section lighting/关灯开关.avif';
+          onVideo.style.display = 'none';
+          offVideo.style.display = 'block';
+          offVideo.currentTime = 0;
+          safePlay(offVideo);
+          onVideo.pause();
+        }
       });
     </script>
   </body>
