@@ -1072,7 +1072,7 @@
       }
       .s8-wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
       .s8-head { text-align: center; margin-bottom: 80px; }
-      .s8-badge { display: none; }
+      .s8-badge { width: 97px; height: 97px; object-fit: cover; display: block; margin: 0 auto 22px; }
       .s8-title { margin: 0 0 16px; font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: 0; }
       .s8-desc { margin: 0; font-size: 18px; line-height: 1.6; color: #666; }
       .s8-grid {
@@ -1107,7 +1107,55 @@
       .s8-meta { padding: 0; text-align: center; }
       .s8-name { margin: 0 0 8px; font-size: 18px; font-weight: 700; line-height: 1.2; }
       .s8-role { margin: 0; font-size: 14px; line-height: 1.4; color: #666; }
-      .s8-collab { display: none; }
+      .s8-collab {
+        margin-top: 52px;
+        border: 1px solid #000;
+        border-radius: 8px;
+        background: #fff;
+        padding: 30px 28px;
+        position: relative;
+        overflow: hidden;
+      }
+      .s8-collab-title {
+        margin: 0 0 12px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 1.6;
+        font-weight: 700;
+      }
+      .s8-collab-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 24px;
+        margin-bottom: 20px;
+      }
+      .s8-collab-item {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+      }
+      .s8-collab-actions { display: flex; justify-content: center; }
+      .s8-collab-btn {
+        border: 1px solid #b37919;
+        background: #fff;
+        color: #5c5c5c;
+        border-radius: 5px;
+        min-width: 120px;
+        height: 34px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .s8-collab-gif {
+        position: absolute;
+        right: 18px;
+        bottom: 6px;
+        width: 145px;
+        height: 145px;
+        object-fit: cover;
+        pointer-events: none;
+      }
 
       @media (max-width: 1200px) {
         .s7-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1116,6 +1164,7 @@
         .s7-wrap { gap: 20px; }
         .s7-sidebar { display: none; }
         #section-8-team { padding-left: 20px; padding-right: 20px; }
+        .s8-collab-gif { display: none; }
       }
 
       @media (max-width: 900px) {
@@ -1475,6 +1524,7 @@
     <section id="section-8-team" data-section="8-team">
       <div class="s8-wrap">
         <div class="s8-head">
+          <img class="s8-badge" src="assets/team/team-badge.gif" alt="team badge" />
           <h2 class="s8-title">我们的共创团队</h2>
           <p class="s8-desc">来自全球各地的联合创始人，共同构建AI赋能社群</p>
         </div>
@@ -1486,6 +1536,22 @@
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/remi.png" alt="Remi"></div><div class="s8-meta"><h3 class="s8-name">Remi</h3><p class="s8-role">动画设计师 · 伦敦|广州</p></div></article>
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/ami.png" alt="Ami"></div><div class="s8-meta"><h3 class="s8-name">Ami</h3><p class="s8-role">Creator&创业者 · 上海|香港</p></div></article>
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/dusing.png" alt="Dusing"></div><div class="s8-meta"><h3 class="s8-name">Dusing</h3><p class="s8-role">UX设计师&顾问 · 荷兰|台北</p></div></article>
+        </div>
+
+        <div class="s8-collab">
+          <h3 class="s8-collab-title">共创计划/申请制</h3>
+          <div class="s8-collab-list">
+            <span class="s8-collab-item">深度商业合作伙伴</span>
+            <span class="s8-collab-item">Creator+</span>
+            <span class="s8-collab-item">课程联合出品</span>
+            <span class="s8-collab-item">产品联名/共同孵化</span>
+            <span class="s8-collab-item">收益分成</span>
+            <span class="s8-collab-item">定向Mentorship资源</span>
+          </div>
+          <div class="s8-collab-actions">
+            <button class="s8-collab-btn">联系合作</button>
+          </div>
+          <img class="s8-collab-gif" src="assets/team/collab-bird.gif" alt="collab bird" />
         </div>
       </div>
     </section>
