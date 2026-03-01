@@ -265,7 +265,7 @@
       }
       .s2-title mark {
         background: #e9a63f;
-        padding: 0 12px 3px;
+        padding: 0 12px 1px;
       }
       .s2-tabbar {
         border: 1px solid #b7b8b4;
@@ -286,6 +286,20 @@
         padding: 6px 10px;
         cursor: pointer;
         transition: background-color .15s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .s2-tab-icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+      }
+      .s2-tab-icon img {
+        width: 100%;
+        height: 100%;
+        display: block;
       }
       .s2-tab:hover { background: #f2f2ef; }
       .s2-tab.is-active {
@@ -484,10 +498,10 @@
         </div>
 
         <div class="s2-tabbar" id="s2Tabbar">
-          <button class="s2-tab is-active" data-tab="beginner" type="button">𖥔 从零开始</button>
-          <button class="s2-tab" data-tab="product" type="button">⌂ 构建产品</button>
-          <button class="s2-tab" data-tab="content" type="button">◍ 内容创作</button>
-          <button class="s2-tab" data-tab="automation" type="button">⚯ 自动化</button>
+          <button class="s2-tab is-active" data-tab="beginner" type="button"><span class="s2-tab-icon"><img src="assets/icons/tab-beginner.svg" alt="" /></span><span>从零开始</span></button>
+          <button class="s2-tab" data-tab="product" type="button"><span class="s2-tab-icon"><img src="assets/icons/tab-product.svg" alt="" /></span><span>构建产品</span></button>
+          <button class="s2-tab" data-tab="content" type="button"><span class="s2-tab-icon"><img src="assets/icons/tab-content.svg" alt="" /></span><span>内容创作</span></button>
+          <button class="s2-tab" data-tab="automation" type="button"><span class="s2-tab-icon"><img src="assets/icons/tab-automation.svg" alt="" /></span><span>自动化</span></button>
         </div>
 
         <div class="s2-content">
