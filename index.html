@@ -805,6 +805,74 @@
         to { transform: translateX(-50%); }
       }
 
+      /* ===== SECTION 6: 创始成员招募 ===== */
+      #section-6-founding {
+        width: 100%;
+        padding: 20px 100px 90px;
+        background: #fdfdfa;
+      }
+      .s6-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
+      .s6-panel {
+        border: 1px solid #222;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #eeefe9;
+      }
+      .s6-topbar {
+        height: 56px;
+        border-bottom: 1px solid #222;
+        display: flex;
+        align-items: center;
+        padding: 0 22px;
+        gap: 10px;
+      }
+      .s6-dot { width: 18px; height: 18px; border: 2px solid #222; border-radius: 50%; background: #fff; }
+      .s6-dot.is-active { background: #e1a046; }
+      .s6-body { padding: 56px 40px 60px; text-align: center; }
+      .s6-bird { width: 77px; height: 77px; object-fit: cover; margin: 0 auto 16px; display: block; }
+      .s6-chip {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 8px;
+        background: #dfdfdc;
+        font-size: 40px;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .s6-title {
+        margin: 0;
+        font-family: "Utara Variable", Inter, sans-serif;
+        font-size: 58px;
+        font-weight: 1000;
+        line-height: 1.2;
+      }
+      .s6-title .hl { text-decoration: underline; text-decoration-color: #e1a046; text-underline-offset: 6px; }
+      .s6-desc {
+        margin: 16px 0 36px;
+        font-size: 44px;
+        line-height: 1.5;
+      }
+      .s6-scale {
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto 30px;
+      }
+      .s6-line {
+        height: 6px;
+        background: linear-gradient(to right, #e1a046 0% 50%, #ddd 50% 100%);
+        border: 2px solid #222;
+        border-radius: 999px;
+        position: relative;
+      }
+      .s6-point {
+        position: absolute; top: 50%; transform: translate(-50%, -50%);
+        width: 26px; height: 26px; border-radius: 50%; border: 2px solid #222; background: #fff;
+      }
+      .s6-point.left { left: 0; background: #e1a046; }
+      .s6-point.mid { left: 50%; background: #e1a046; }
+      .s6-point.right { left: 100%; }
+      .s6-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 44px; font-weight: 700; }
+
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
         .hero-row { flex-direction: column; }
@@ -847,6 +915,17 @@
         }
         .s5-ticker { height: 52px; }
         .s5-item { font-size: 14px; }
+
+        #section-6-founding { padding: 14px 14px 36px; }
+        .s6-topbar { height: 40px; }
+        .s6-dot { width: 12px; height: 12px; border-width: 1.5px; }
+        .s6-body { padding: 24px 14px 30px; }
+        .s6-bird { width: 48px; height: 48px; margin-bottom: 8px; }
+        .s6-chip { font-size: 16px; margin-bottom: 10px; }
+        .s6-title { font-size: 34px; }
+        .s6-desc { font-size: 18px; margin: 10px 0 18px; }
+        .s6-labels { font-size: 20px; }
+      }
       }
     </style>
   </head>
@@ -1072,6 +1151,39 @@
           <div class="s5-mask-left"></div>
           <div class="s5-track" id="s5Track"></div>
           <div class="s5-mask-right"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 6: 创始成员招募 -->
+    <!-- ========================= -->
+    <section id="section-6-founding" data-section="6-founding">
+      <div class="s6-wrap">
+        <div class="s6-panel">
+          <div class="s6-topbar">
+            <span class="s6-dot is-active"></span><span class="s6-dot"></span><span class="s6-dot"></span>
+          </div>
+          <div class="s6-body">
+            <img class="s6-bird" src="assets/icons/early-bird.gif" alt="bird" />
+            <div class="s6-chip">早期成员 限时招募 · 名额有限</div>
+            <h3 class="s6-title">成为我们的第1876个<span class="hl">创始成员</span></h3>
+            <p class="s6-desc">社群核心功能已就绪。现在加入，💲25/月，享受社群全部权益。<br/>功能陆续上线后，价格将上调（预计≥$40/月）。</p>
+
+            <div class="s6-scale">
+              <div class="s6-line">
+                <span class="s6-point left"></span>
+                <span class="s6-point mid"></span>
+                <span class="s6-point right"></span>
+              </div>
+              <div class="s6-labels"><span>$15/月</span><span>$25/月</span><span>≥$40/月</span></div>
+            </div>
+
+            <div class="btn-wrap" style="width:212px;height:56px;margin:0 auto;">
+              <div class="btn-base" style="width:212px;height:46px;"></div>
+              <div class="btn-top" style="width:212px;height:46px;font-size:15px;">成为早期会员</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
