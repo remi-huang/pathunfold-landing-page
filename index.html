@@ -1181,6 +1181,46 @@
         box-shadow: 0 4px 0 #c6841d;
       }
 
+      /* ===== SECTION 9: 试验空间到用AI发电 ===== */
+      #section-9-showcase {
+        width: 100%;
+        padding: 72px 32px 64px;
+        background: #fdfdfa;
+      }
+      .s9-wrap { width: 100%; max-width: 1700px; margin: 0 auto; }
+      .s9-title {
+        margin: 0;
+        text-align: center;
+        font-size: 62px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+      }
+      .s9-desc {
+        margin: 34px auto 0;
+        max-width: 1020px;
+        text-align: center;
+        font-size: 39px;
+        line-height: 1.6;
+      }
+      .s9-row {
+        margin-top: 84px;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .s9-card {
+        border: 1px solid #3a3a3a;
+        background: #fff;
+        overflow: hidden;
+      }
+      .s9-card img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
       @media (max-width: 1200px) {
         .s7-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -1197,6 +1237,11 @@
         .s8-collab-title { font-size: 20px; }
         .s8-collab-sub { font-size: 14px; }
         .s8-collab-actions { justify-content: flex-start; }
+
+        #section-9-showcase { padding: 56px 20px 52px; }
+        .s9-title { font-size: 42px; }
+        .s9-desc { font-size: 22px; }
+        .s9-row { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 40px; }
       }
 
       @media (max-width: 900px) {
@@ -1588,6 +1633,24 @@
           <div class="s8-collab-actions">
             <button class="s8-collab-btn">联系合作</button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 9: 试验空间到用AI发电 -->
+    <!-- ========================= -->
+    <section id="section-9-showcase" data-section="9-showcase">
+      <div class="s9-wrap">
+        <h2 class="s9-title">从「试验空间」到「用AI发电」独立社群</h2>
+        <p class="s9-desc">在「一口新饭」社群里，我们开设了「用A发电」空间。<br/>各行各业的普通人在这里学会用AI实现想法: 内容创作者用AI加速创作，一人企业创业者搭建自动化运营系统，在校大学生成功上架第一个AppStore应用，甚至资深程序员也转变心态成为独立开发者开启自己的事业....<br/>每周的直播让每个人，包括行业专家都能收获 unknownunknowns，这才是跨界交流的魅力。</p>
+
+        <div class="s9-row">
+          <article class="s9-card"><img src="assets/showcase/post-1.png" alt="showcase 1"/></article>
+          <article class="s9-card"><img src="assets/showcase/post-2.png" alt="showcase 2"/></article>
+          <article class="s9-card"><img src="assets/showcase/post-3.png" alt="showcase 3"/></article>
+          <article class="s9-card"><img src="assets/showcase/post-4.png" alt="showcase 4"/></article>
+          <article class="s9-card"><img src="assets/showcase/post-5.png" alt="showcase 5"/></article>
         </div>
       </div>
     </section>
