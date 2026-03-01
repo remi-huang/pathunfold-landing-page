@@ -1064,61 +1064,58 @@
       /* ===== SECTION 8: 共创团队 ===== */
       #section-8-team {
         width: 100%;
-        padding: 70px 100px 100px;
+        padding: 80px 20px;
         background: #fdfdfa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      .s8-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
-      .s8-head { text-align: center; margin-bottom: 36px; }
-      .s8-badge { width: 64px; height: 64px; object-fit: contain; margin: 0 auto 14px; display: block; }
-      .s8-title { margin: 0 0 10px; font-size: 52px; font-weight: 1000; line-height: 1.2; letter-spacing: -0.03em; }
-      .s8-desc { margin: 0 auto; font-size: 24px; line-height: 1.45; max-width: 900px; }
+      .s8-wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
+      .s8-head { text-align: center; margin-bottom: 80px; }
+      .s8-badge { display: none; }
+      .s8-title { margin: 0 0 16px; font-size: 32px; font-weight: 800; line-height: 1.2; letter-spacing: 0; }
+      .s8-desc { margin: 0; font-size: 18px; line-height: 1.6; color: #666; }
       .s8-grid {
-        margin-top: 40px;
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        column-gap: 66px;
+        row-gap: 80px;
       }
       .s8-card {
-        border: 1px solid #222;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #fff;
-      }
-      .s8-photo-wrap { height: 260px; border-bottom: 1px solid #222; background: #ecece8; }
-      .s8-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .s8-meta { padding: 14px 16px 16px; text-align: center; }
-      .s8-name { margin: 0 0 4px; font-size: 30px; font-weight: 900; line-height: 1.1; }
-      .s8-role { margin: 0; font-size: 18px; line-height: 1.35; }
-      .s8-collab {
-        margin-top: 38px;
-        border: 1px solid #222;
-        border-radius: 8px;
-        padding: 26px 26px 30px;
-        background: #f7f7f4;
-      }
-      .s8-collab-title { margin: 0 0 18px; font-size: 30px; font-weight: 900; text-align: center; }
-      .s8-collab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-      .s8-pill {
-        border: 1px solid #222;
-        border-radius: 999px;
-        padding: 11px 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        font-size: 18px;
-        font-weight: 700;
-        background: #fff;
+        background: transparent;
+        border: 0;
       }
+      .s8-photo-wrap {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background: #f5f5f5;
+        border: 1px solid #000;
+      }
+      .s8-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .s8-meta { padding: 0; text-align: center; }
+      .s8-name { margin: 0 0 8px; font-size: 18px; font-weight: 700; line-height: 1.2; }
+      .s8-role { margin: 0; font-size: 14px; line-height: 1.4; color: #666; }
+      .s8-collab { display: none; }
 
       @media (max-width: 1200px) {
         .s7-grid { grid-template-columns: repeat(2, 1fr); }
-        .s8-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
       @media (max-width: 1024px) {
         .s7-wrap { gap: 20px; }
         .s7-sidebar { display: none; }
-        #section-8-team { padding-left: 24px; padding-right: 24px; }
-        .s8-title { font-size: 40px; }
-        .s8-desc { font-size: 20px; }
-        .s8-collab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        #section-8-team { padding-left: 20px; padding-right: 20px; }
       }
 
       @media (max-width: 900px) {
@@ -1478,30 +1475,17 @@
     <section id="section-8-team" data-section="8-team">
       <div class="s8-wrap">
         <div class="s8-head">
-          <img class="s8-badge" src="assets/team/team-badge.gif" alt="team badge" />
           <h2 class="s8-title">我们的共创团队</h2>
-          <p class="s8-desc">来自全球各地的联合创始人，共同构建 AI 赋能社群</p>
+          <p class="s8-desc">来自全球各地的联合创始人，共同构建AI赋能社群</p>
         </div>
 
         <div class="s8-grid">
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/mike.png" alt="Mike"></div><div class="s8-meta"><h3 class="s8-name">Mike</h3><p class="s8-role">知名开发者 · 加拿大</p></div></article>
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/ray.png" alt="Ray"></div><div class="s8-meta"><h3 class="s8-name">Ray</h3><p class="s8-role">Creator&创业者 · 加拿大</p></div></article>
           <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/serena.png" alt="Serena"></div><div class="s8-meta"><h3 class="s8-name">Serena</h3><p class="s8-role">Creator&工程师 · 美国湾区</p></div></article>
-          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/remi.png" alt="Remi"></div><div class="s8-meta"><h3 class="s8-name">Remi</h3><p class="s8-role">动画设计师 · 伦敦｜广州</p></div></article>
-          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/ami.png" alt="Ami"></div><div class="s8-meta"><h3 class="s8-name">Ami</h3><p class="s8-role">Creator&创业者 · 上海｜香港</p></div></article>
-          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/dusing.png" alt="Dusing"></div><div class="s8-meta"><h3 class="s8-name">Dusing</h3><p class="s8-role">UX设计师&顾问 · 荷兰｜台北</p></div></article>
-        </div>
-
-        <div class="s8-collab">
-          <h3 class="s8-collab-title">共创计划</h3>
-          <div class="s8-collab-grid">
-            <div class="s8-pill">申请制深度商业合作伙伴</div>
-            <div class="s8-pill">Creator+课程联合出品</div>
-            <div class="s8-pill">产品联名/共同孵化</div>
-            <div class="s8-pill">收益分成</div>
-            <div class="s8-pill">定向 Mentorship 资源</div>
-            <div class="s8-pill">联系合作</div>
-          </div>
+          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/remi.png" alt="Remi"></div><div class="s8-meta"><h3 class="s8-name">Remi</h3><p class="s8-role">动画设计师 · 伦敦|广州</p></div></article>
+          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/ami.png" alt="Ami"></div><div class="s8-meta"><h3 class="s8-name">Ami</h3><p class="s8-role">Creator&创业者 · 上海|香港</p></div></article>
+          <article class="s8-card"><div class="s8-photo-wrap"><img class="s8-photo" src="assets/team/dusing.png" alt="Dusing"></div><div class="s8-meta"><h3 class="s8-name">Dusing</h3><p class="s8-role">UX设计师&顾问 · 荷兰|台北</p></div></article>
         </div>
       </div>
     </section>
