@@ -744,7 +744,24 @@
         width: 100%;
         padding: 10px 100px 70px;
         background: #fdfdfa;
+        position: relative;
+        --s5-line-top: 10px;
+        --s5-line-height: 64px;
       }
+      #section-5-city-ticker::before,
+      #section-5-city-ticker::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        height: 1px;
+        background: #000;
+        pointer-events: none;
+        z-index: 5;
+      }
+      #section-5-city-ticker::before { top: var(--s5-line-top); }
+      #section-5-city-ticker::after { top: calc(var(--s5-line-top) + var(--s5-line-height)); }
       .s5-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
       .s5-ticker {
         width: 100%;
@@ -754,20 +771,7 @@
         display: flex;
         align-items: center;
       }
-      .s5-ticker::before,
-      .s5-ticker::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100vw;
-        height: 1px;
-        background: #000;
-        z-index: 3;
-        pointer-events: none;
-      }
-      .s5-ticker::before { top: 0; }
-      .s5-ticker::after { bottom: 0; }
+      /* lines are drawn by section pseudo-elements for true full-width bleed */
       .s5-track {
         display: flex;
         align-items: center;
@@ -836,7 +840,11 @@
           transform-origin: left bottom;
         }
 
-        #section-5-city-ticker { padding: 8px 14px 30px; }
+        #section-5-city-ticker {
+          padding: 8px 14px 30px;
+          --s5-line-top: 8px;
+          --s5-line-height: 52px;
+        }
         .s5-ticker { height: 52px; }
         .s5-item { font-size: 14px; }
       }
