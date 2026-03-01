@@ -837,8 +837,27 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 36px;
+        gap: 0;
         background: #fdfdfa;
+      }
+      .s6-block + .s6-block { margin-top: 20px; }
+      .s6-block-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .s6-block-middle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+      .s6-block-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
       }
       .s6-bird { width: 77px; height: 59px; object-fit: cover; display: block; }
       .s6-chip {
@@ -1184,23 +1203,30 @@
             <span class="s6-dot is-active"></span><span class="s6-dot"></span><span class="s6-dot"></span>
           </div>
           <div class="s6-body">
-            <img class="s6-bird" src="assets/icons/early-bird.gif" alt="bird" />
-            <div class="s6-chip">早期成员 限时招募 · 名额有限</div>
-            <h3 class="s6-title">成为我们的第1876个<span class="hl">创始成员</span></h3>
-            <p class="s6-desc">社群核心功能已就绪。现在加入，💲25/月，享受社群全部权益。<br/>功能陆续上线后，价格将上调（预计≥💲40/月）。</p>
-
-            <div class="s6-scale">
-              <div class="s6-line">
-                <span class="s6-point left"></span>
-                <span class="s6-point mid"></span>
-                <span class="s6-point right"></span>
-              </div>
-              <div class="s6-labels"><span>💲15/月</span><span>💲25/月</span><span>≥💲40/月</span></div>
+            <div class="s6-block s6-block-top">
+              <img class="s6-bird" src="assets/icons/early-bird.gif" alt="bird" />
+              <div class="s6-chip">早期成员 限时招募 · 名额有限</div>
             </div>
 
-            <div class="btn-wrap" style="width:212px;height:56px;margin:0 auto;">
-              <div class="btn-base" style="width:212px;height:46px;"></div>
-              <div class="btn-top" style="width:212px;height:46px;font-size:15px;">成为早期会员</div>
+            <div class="s6-block s6-block-middle">
+              <h3 class="s6-title">成为我们的第1876个<span class="hl">创始成员</span></h3>
+              <p class="s6-desc">社群核心功能已就绪。现在加入，💲25/月，享受社群全部权益。<br/>功能陆续上线后，价格将上调（预计≥💲40/月）。</p>
+            </div>
+
+            <div class="s6-block s6-block-bottom">
+              <div class="s6-scale">
+                <div class="s6-line">
+                  <span class="s6-point left"></span>
+                  <span class="s6-point mid"></span>
+                  <span class="s6-point right"></span>
+                </div>
+                <div class="s6-labels"><span>💲15/月</span><span>💲25/月</span><span>≥💲40/月</span></div>
+              </div>
+
+              <div class="btn-wrap" style="width:212px;height:56px;margin:0 auto;">
+                <div class="btn-base" style="width:212px;height:46px;"></div>
+                <div class="btn-top" style="width:212px;height:46px;font-size:15px;">成为早期会员</div>
+              </div>
             </div>
           </div>
         </div>
