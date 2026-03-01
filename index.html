@@ -221,8 +221,124 @@
         color: #5c5c5c;
       }
 
-      .placeholder {
-        height: 1200px;
+      /* ===== SECTION 2: 课程学习路径 ===== */
+      #section-2-learning-path {
+        width: 100%;
+        padding: 10px 50px 40px;
+        background: #f0f1eb;
+      }
+      .s2-wrap {
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .s2-title-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .s2-title-icon {
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+      }
+      .s2-title {
+        margin: 0;
+        font-size: 42px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .s2-title mark {
+        background: #e9a63f;
+        padding: 0 8px;
+      }
+      .s2-tabbar {
+        border: 1px solid #bfc0bc;
+        background: #ecece8;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        padding: 6px;
+        margin-bottom: 10px;
+      }
+      .s2-tab {
+        border: 1px solid #b9bab7;
+        background: #efefec;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 14px;
+        padding: 7px 10px;
+      }
+      .s2-tab.is-active {
+        background: #f8f8f5;
+      }
+      .s2-content {
+        border: 1px solid #bfc0bc;
+        background: #efefeb;
+        display: grid;
+        grid-template-columns: 37% 63%;
+        min-height: 330px;
+      }
+      .s2-left {
+        border-right: 1px solid #bfc0bc;
+        padding: 16px 14px;
+        font-size: 12px;
+      }
+      .s2-left h4 {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+      .s2-divider {
+        border: 0;
+        border-top: 1px solid #bfc0bc;
+        margin: 14px 0;
+      }
+      .s2-pill {
+        border: 1px solid #babbb8;
+        background: #d9d9d6;
+        font-size: 11px;
+        padding: 4px 8px;
+        margin: 6px 0;
+      }
+      .s2-list {
+        margin: 0;
+        padding-left: 16px;
+        line-height: 1.55;
+        color: #303030;
+      }
+      .s2-btn {
+        margin-top: 14px;
+        width: 100px;
+        border: 1px solid #b07925;
+        background: #fff;
+        border-radius: 4px;
+        font-size: 12px;
+        padding: 4px 0;
+      }
+      .s2-right {
+        padding: 14px;
+      }
+      .s2-card {
+        background: #de5f52;
+        border-radius: 3px;
+        padding: 16px;
+        height: 100%;
+        color: #fff;
+      }
+      .s2-card h3 {
+        margin: 0 0 8px;
+        font-size: 31px;
+        line-height: 1.2;
+      }
+      .s2-card p {
+        margin: 0 0 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .s2-card-media {
+        width: 100%;
+        border-radius: 3px;
+        border: 1px solid #e0e0e0;
       }
 
       @media (max-width: 1200px) {
@@ -300,7 +416,57 @@
       </section>
     </main>
 
-    <div class="placeholder"></div>
+    <!-- ========================= -->
+    <!-- SECTION 2: 课程学习路径 -->
+    <!-- ========================= -->
+    <section id="section-2-learning-path" data-section="2-learning-path">
+      <div class="s2-wrap">
+        <div class="s2-title-row">
+          <img class="s2-title-icon" src="https://framerusercontent.com/images/ULjFgAHCO6j0yCOyNeaz8ZBytbM.gif?width=300&height=300" alt="路径图标" />
+          <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
+        </div>
+
+        <div class="s2-tabbar">
+          <div class="s2-tab is-active">𖥔 从零开始</div>
+          <div class="s2-tab">⌂ 构建产品</div>
+          <div class="s2-tab">◍ 内容创作</div>
+          <div class="s2-tab">⚯ 自动化</div>
+        </div>
+
+        <div class="s2-content">
+          <aside class="s2-left">
+            <h4>我是完全新手 · The Vibe Coder</h4>
+            <div>没有编程背景？这正是你的优势。</div>
+            <div>在这里，我们教你如何自然地和 AI 协作，把想法落地。</div>
+
+            <hr class="s2-divider" />
+            <div><strong>核心课程</strong></div>
+            <div class="s2-pill">⟡ Claude Code · Gemini CLI · Codex CLI 101</div>
+            <div class="s2-pill">◍ Cursor 101 - 制作 3 个 Web App</div>
+
+            <hr class="s2-divider" />
+            <div><strong>进阶与选修</strong></div>
+            <ul class="s2-list">
+              <li>入门向：AI 工具分类与选择</li>
+              <li>Mac 新手必看：AI 编程环境搭建</li>
+              <li>Windows 系统 Vibe Coding 专区</li>
+              <li>AI 浏览器六大应用场景示例</li>
+              <li>在 Windows 安装 Codex CLI（大陆友好版）</li>
+            </ul>
+
+            <button class="s2-btn" type="button">全部课程</button>
+          </aside>
+
+          <div class="s2-right">
+            <article class="s2-card">
+              <h3>⟡ Claude Code · Gemini CLI · Codex CLI 101</h3>
+              <p>专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。</p>
+              <img class="s2-card-media" src="https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354" alt="课程卡片预览" />
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script>
       const toggleBtn = document.getElementById('toggleBtn');
