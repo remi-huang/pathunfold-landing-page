@@ -811,67 +811,84 @@
         padding: 20px 100px 90px;
         background: #fdfdfa;
       }
-      .s6-wrap { width: 1200px; max-width: 100%; margin: 0 auto; }
+      .s6-wrap { width: 1200px; max-width: 100%; margin: 0 auto; display: flex; justify-content: center; }
       .s6-panel {
+        width: 1175px;
+        height: 561px;
         border: 1px solid #222;
-        border-radius: 8px;
+        border-radius: 5px;
         overflow: hidden;
         background: #eeefe9;
       }
       .s6-topbar {
-        height: 56px;
+        height: 54px;
         border-bottom: 1px solid #222;
         display: flex;
         align-items: center;
         padding: 0 22px;
-        gap: 10px;
+        gap: 9px;
       }
-      .s6-dot { width: 18px; height: 18px; border: 2px solid #222; border-radius: 50%; background: #fff; }
-      .s6-dot.is-active { background: #e1a046; }
-      .s6-body { padding: 56px 40px 60px; text-align: center; }
-      .s6-bird { width: 77px; height: 77px; object-fit: cover; margin: 0 auto 16px; display: block; }
+      .s6-dot { width: 12px; height: 12px; border: 1px solid #222; border-radius: 50%; background: #fff; }
+      .s6-dot.is-active { background: #eda344; }
+      .s6-body {
+        padding: 20px 0 24px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .s6-bird { width: 77px; height: 59px; object-fit: cover; display: block; }
       .s6-chip {
-        display: inline-block;
-        padding: 4px 10px;
-        border-radius: 8px;
-        background: #dfdfdc;
-        font-size: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 26px;
+        width: 220px;
+        border-radius: 5px;
+        background: #edede8;
+        font-size: 16px;
         line-height: 1.6;
-        margin-bottom: 24px;
       }
       .s6-title {
         margin: 0;
         font-family: "Utara Variable", Inter, sans-serif;
-        font-size: 58px;
+        font-size: 32px;
         font-weight: 1000;
-        line-height: 1.2;
+        line-height: 1.6;
       }
       .s6-title .hl { text-decoration: underline; text-decoration-color: #e1a046; text-underline-offset: 6px; }
       .s6-desc {
-        margin: 16px 0 36px;
-        font-size: 44px;
-        line-height: 1.5;
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
       }
       .s6-scale {
         width: 100%;
-        max-width: 1040px;
-        margin: 0 auto 30px;
+        max-width: 1130px;
+        margin: 8px auto 4px;
       }
       .s6-line {
-        height: 6px;
-        background: linear-gradient(to right, #e1a046 0% 50%, #ddd 50% 100%);
-        border: 2px solid #222;
-        border-radius: 999px;
+        height: 8px;
+        background: linear-gradient(to right, #eda344 0% 50%, #edede8 50% 100%);
+        border: 1px solid #222;
         position: relative;
       }
       .s6-point {
         position: absolute; top: 50%; transform: translate(-50%, -50%);
-        width: 26px; height: 26px; border-radius: 50%; border: 2px solid #222; background: #fff;
+        width: 15px; height: 15px; border-radius: 50%; border: 1px solid #222; background: #fff;
       }
-      .s6-point.left { left: 0; background: #e1a046; }
-      .s6-point.mid { left: 50%; background: #e1a046; }
+      .s6-point.left { left: 0; background: #eda344; }
+      .s6-point.mid { left: 50%; background: #eda344; }
       .s6-point.right { left: 100%; }
-      .s6-labels { display: flex; justify-content: space-between; margin-top: 10px; font-size: 44px; font-weight: 700; }
+      .s6-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 22px;
+        font-size: 20px;
+        font-weight: 700;
+        font-family: "Utara Variable", Inter, sans-serif;
+      }
 
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
@@ -1168,7 +1185,7 @@
             <img class="s6-bird" src="assets/icons/early-bird.gif" alt="bird" />
             <div class="s6-chip">早期成员 限时招募 · 名额有限</div>
             <h3 class="s6-title">成为我们的第1876个<span class="hl">创始成员</span></h3>
-            <p class="s6-desc">社群核心功能已就绪。现在加入，💲25/月，享受社群全部权益。<br/>功能陆续上线后，价格将上调（预计≥$40/月）。</p>
+            <p class="s6-desc">社群核心功能已就绪。现在加入，💲25/月，享受社群全部权益。<br/>功能陆续上线后，价格将上调（预计≥💲40/月）。</p>
 
             <div class="s6-scale">
               <div class="s6-line">
@@ -1176,7 +1193,7 @@
                 <span class="s6-point mid"></span>
                 <span class="s6-point right"></span>
               </div>
-              <div class="s6-labels"><span>$15/月</span><span>$25/月</span><span>≥$40/月</span></div>
+              <div class="s6-labels"><span>💲15/月</span><span>💲25/月</span><span>≥💲40/月</span></div>
             </div>
 
             <div class="btn-wrap" style="width:212px;height:56px;margin:0 auto;">
