@@ -6,7 +6,7 @@
     <title>PathUnfold Hero Pixel Pass</title>
     <style>
       :root {
-        --bg: #fdfefa;
+        --bg: #fdfdfa;
         --text: #000;
         --btn-top: rgb(237, 155, 44);
         --btn-bottom: rgb(206, 131, 6);
@@ -30,7 +30,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 40px;
-        background: #fdfefa;
+        background: #fdfdfa;
         box-shadow: 0 1px 2px #00000040;
       }
       .header-left { display: flex; align-items: center; gap: 20px; }
@@ -225,7 +225,7 @@
       #section-2-learning-path {
         width: 100%;
         padding: 20px 50px 44px;
-        background: #efefea;
+        background: #fdfdfa;
       }
       .s2-wrap {
         max-width: 1280px;
@@ -264,15 +264,20 @@
         margin-bottom: 10px;
       }
       .s2-tab {
+        appearance: none;
         border: 1px solid #b7b8b4;
         background: #efefeb;
         border-radius: 3px;
         text-align: center;
         font-size: 13px;
         padding: 6px 10px;
+        cursor: pointer;
+        transition: background-color .15s ease;
       }
+      .s2-tab:hover { background: #f2f2ef; }
       .s2-tab.is-active {
         background: #f6f6f3;
+        font-weight: 600;
       }
       .s2-content {
         border: 1px solid #b7b8b4;
@@ -446,27 +451,27 @@
           <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
         </div>
 
-        <div class="s2-tabbar">
-          <div class="s2-tab is-active">𖥔 从零开始</div>
-          <div class="s2-tab">⌂ 构建产品</div>
-          <div class="s2-tab">◍ 内容创作</div>
-          <div class="s2-tab">⚯ 自动化</div>
+        <div class="s2-tabbar" id="s2Tabbar">
+          <button class="s2-tab is-active" data-tab="beginner" type="button">𖥔 从零开始</button>
+          <button class="s2-tab" data-tab="product" type="button">⌂ 构建产品</button>
+          <button class="s2-tab" data-tab="content" type="button">◍ 内容创作</button>
+          <button class="s2-tab" data-tab="automation" type="button">⚯ 自动化</button>
         </div>
 
         <div class="s2-content">
           <aside class="s2-left">
-            <h4>我是完全新手 · The Vibe Coder</h4>
-            <div>没有编程背景？这正是你的优势。</div>
-            <div>在这里，我们教你如何自然地和 AI 协作，把想法落地。</div>
+            <h4 id="s2LeftTitle">我是完全新手 · The Vibe Coder</h4>
+            <div id="s2LeftDesc1">没有编程背景？这正是你的优势。</div>
+            <div id="s2LeftDesc2">在这里，我们教你如何自然地和 AI 协作，把想法落地。</div>
 
             <hr class="s2-divider" />
             <div><strong>核心课程</strong></div>
-            <div class="s2-pill">⟡ Claude Code · Gemini CLI · Codex CLI 101</div>
-            <div class="s2-pill">◍ Cursor 101 - 制作 3 个 Web App</div>
+            <div class="s2-pill" id="s2Core1">⟡ Claude Code · Gemini CLI · Codex CLI 101</div>
+            <div class="s2-pill" id="s2Core2">◍ Cursor 101 - 制作 3 个 Web App</div>
 
             <hr class="s2-divider" />
             <div><strong>进阶与选修</strong></div>
-            <ul class="s2-list">
+            <ul class="s2-list" id="s2AdvancedList">
               <li>入门向：AI 工具分类与选择</li>
               <li>Mac 新手必看：AI 编程环境搭建</li>
               <li>Windows 系统 Vibe Coding 专区</li>
@@ -478,10 +483,10 @@
           </aside>
 
           <div class="s2-right">
-            <article class="s2-card">
-              <h3>⟡ Claude Code · Gemini CLI · Codex CLI 101</h3>
-              <p>专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。</p>
-              <img class="s2-card-media" src="https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354" alt="课程卡片预览" />
+            <article class="s2-card" id="s2Card">
+              <h3 id="s2CardTitle">⟡ Claude Code · Gemini CLI · Codex CLI 101</h3>
+              <p id="s2CardDesc">专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。</p>
+              <img class="s2-card-media" id="s2CardImage" src="https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354" alt="课程卡片预览" />
             </article>
           </div>
         </div>
@@ -517,6 +522,122 @@
           safePlay(offVideo);
           onVideo.pause();
         }
+      });
+
+      // SECTION 2 交互：课程学习路径 tabs
+      const s2Data = {
+        beginner: {
+          leftTitle: '我是完全新手 · The Vibe Coder',
+          leftDesc1: '没有编程背景？这正是你的优势。',
+          leftDesc2: '在这里，我们教你如何自然地和 AI 协作，把想法落地。',
+          core1: '⟡ Claude Code · Gemini CLI · Codex CLI 101',
+          core2: '◍ Cursor 101 - 制作 3 个 Web App',
+          advanced: [
+            '入门向：AI 工具分类与选择',
+            'Mac 新手必看：AI 编程环境搭建',
+            'Windows 系统 Vibe Coding 专区',
+            'AI 浏览器六大应用场景示例',
+            '在 Windows 安装 Codex CLI（大陆友好版）'
+          ],
+          cardTitle: '⟡ Claude Code · Gemini CLI · Codex CLI 101',
+          cardDesc: '专为初学者设计的环境搭建指南：在 Mac 和 Windows 上一站式配置三大核心 AI 助手，快速熟悉与 AI 协作的标准工作流程。',
+          cardImage: 'https://framerusercontent.com/images/UQZOoOqDE9RceiU5OX0P01xBz4.png?width=1338&height=354',
+          cardBg: '#dc6154'
+        },
+        product: {
+          leftTitle: '从想法到上架 · Product Builder',
+          leftDesc1: '你将系统化学习如何把创意落地成可用产品。',
+          leftDesc2: '重点放在项目拆解、实现、上线与迭代的完整闭环。',
+          core1: '⟡ AI 应用炼金术：从想法到上架',
+          core2: '◍ iOS App 开发 101',
+          advanced: [
+            '需求拆解与 MVP 定义',
+            '交互与信息架构实践',
+            '从 Demo 到上线流程',
+            '上线后的数据回看与迭代',
+            '跨端产品一致性设计'
+          ],
+          cardTitle: '⟡ AI 应用炼金术：从想法到上架',
+          cardDesc: '从创意落地到商业变现，通过真实项目掌握把想法转化为产品的完整技能路径。',
+          cardImage: 'https://framerusercontent.com/images/WDfkeP5cGnLLYmHeqtIDWXdQwAM.png?width=1338&height=229',
+          cardBg: '#c95d4d'
+        },
+        content: {
+          leftTitle: '内容创作 · Creator Flow',
+          leftDesc1: '把 AI 变成你的内容协作搭档，形成稳定生产流。',
+          leftDesc2: '从脚本、视觉到发布，覆盖完整创作工作流。',
+          core1: '⟡ 零基础做 AI 动画：1 分钟短片创作',
+          core2: '◍ 零门槛用 AI 做影片：工具与实操',
+          advanced: [
+            '内容选题与脚本生成',
+            '视觉素材与剪辑节奏',
+            '多平台发布适配',
+            '创作效率自动化',
+            '持续内容策略'
+          ],
+          cardTitle: '⟡ AI 内容创作工作流',
+          cardDesc: '系统化掌握从灵感到成片的创作流程，用 AI 提升产出速度和质量。',
+          cardImage: 'https://framerusercontent.com/images/781iBRCgCOwLpgdNsWmxnNgW44.png?width=1342&height=356',
+          cardBg: '#d16858'
+        },
+        automation: {
+          leftTitle: '自动化 · Workflow Architect',
+          leftDesc1: '把重复工作变成自动执行的流程，让系统替你跑。',
+          leftDesc2: '学习 n8n / MCP / Agent 的组合方式，打造个人工具链。',
+          core1: '⟡ 打造你的 AI Agent 工具箱',
+          core2: '◍ n8n 实战：构建自动化产线',
+          advanced: [
+            'MCP 工具接入实操',
+            '跨平台自动化编排',
+            '错误处理与监控',
+            '可复用流程模板',
+            '从个人到团队自动化'
+          ],
+          cardTitle: '⟡ 自动化/AI 实战路径',
+          cardDesc: '学习如何整合模型与工具，把零散动作串联成稳定、可持续的高价值流程。',
+          cardImage: 'https://framerusercontent.com/images/TEIzgMVajIwR5EjD2tv5bfSkY7Q.png?width=1338&height=286',
+          cardBg: '#c55a4d'
+        }
+      };
+
+      const s2Tabbar = document.getElementById('s2Tabbar');
+      const s2LeftTitle = document.getElementById('s2LeftTitle');
+      const s2LeftDesc1 = document.getElementById('s2LeftDesc1');
+      const s2LeftDesc2 = document.getElementById('s2LeftDesc2');
+      const s2Core1 = document.getElementById('s2Core1');
+      const s2Core2 = document.getElementById('s2Core2');
+      const s2AdvancedList = document.getElementById('s2AdvancedList');
+      const s2Card = document.getElementById('s2Card');
+      const s2CardTitle = document.getElementById('s2CardTitle');
+      const s2CardDesc = document.getElementById('s2CardDesc');
+      const s2CardImage = document.getElementById('s2CardImage');
+
+      function renderS2(tab) {
+        const d = s2Data[tab];
+        if (!d) return;
+
+        s2LeftTitle.textContent = d.leftTitle;
+        s2LeftDesc1.textContent = d.leftDesc1;
+        s2LeftDesc2.textContent = d.leftDesc2;
+        s2Core1.textContent = d.core1;
+        s2Core2.textContent = d.core2;
+
+        s2AdvancedList.innerHTML = d.advanced.map((item) => `<li>${item}</li>`).join('');
+
+        s2CardTitle.textContent = d.cardTitle;
+        s2CardDesc.textContent = d.cardDesc;
+        s2CardImage.src = d.cardImage;
+        s2Card.style.background = d.cardBg;
+
+        s2Tabbar.querySelectorAll('.s2-tab').forEach((btn) => {
+          btn.classList.toggle('is-active', btn.dataset.tab === tab);
+        });
+      }
+
+      s2Tabbar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.s2-tab');
+        if (!btn) return;
+        renderS2(btn.dataset.tab);
       });
     </script>
   </body>
