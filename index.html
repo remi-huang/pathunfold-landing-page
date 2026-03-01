@@ -235,25 +235,33 @@
       .s2-title-row {
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 16px;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+      .s2-title-icon-wrap {
+        width: 146px;
+        height: 124px;
+        background: #f5f5f1;
+        display: grid;
+        place-items: center;
       }
       .s2-title-icon {
-        width: 56px;
-        height: 56px;
+        width: 88px;
+        height: 88px;
         object-fit: contain;
-        filter: grayscale(1) contrast(1.1);
+        filter: grayscale(1) contrast(1.08);
       }
       .s2-title {
         margin: 0;
-        font-size: 44px;
-        font-weight: 900;
-        letter-spacing: -0.03em;
-        line-height: 1.12;
+        font-family: "Utara Variable", Inter, sans-serif;
+        font-size: 58px;
+        font-weight: 1000;
+        letter-spacing: -0.02em;
+        line-height: 1.06;
       }
       .s2-title mark {
-        background: #e6a33c;
-        padding: 0 9px 2px;
+        background: #e9a63f;
+        padding: 0 9px 3px;
       }
       .s2-tabbar {
         border: 1px solid #b7b8b4;
@@ -289,41 +297,57 @@
       }
       .s2-left {
         border-right: 1px solid #b7b8b4;
-        padding: 16px 16px;
-        font-size: 12px;
+        padding: 34px 34px 28px;
+        font-size: 27px;
         display: flex;
         flex-direction: column;
       }
       .s2-left h4 {
-        margin: 0 0 8px;
-        font-size: 14px;
+        margin: 0 0 12px;
+        font-size: 41px;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+      }
+      #s2LeftDesc1,
+      #s2LeftDesc2 {
+        font-size: 27px;
+        line-height: 1.45;
+        color: #5f5f5f;
       }
       .s2-divider {
         border: 0;
         border-top: 1px solid #b7b8b4;
         margin: 12px 0;
       }
+      .s2-subhead {
+        font-size: 39px;
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
       .s2-pill {
         border: 1px solid #b2b3af;
         background: #d7d7d3;
-        font-size: 11px;
-        padding: 4px 8px;
-        margin: 6px 0;
+        font-size: 26px;
+        line-height: 1.3;
+        padding: 9px 12px;
+        margin: 10px 0;
+        border-radius: 7px;
       }
       .s2-list {
         margin: 0;
-        padding-left: 16px;
-        line-height: 1.55;
-        color: #333;
+        padding-left: 26px;
+        line-height: 1.62;
+        color: #2f2f2f;
+        font-size: 30px;
       }
       .s2-btn {
         margin-top: auto;
-        width: 100px;
+        width: 241px;
         border: 1px solid #b17925;
         background: #fff;
-        border-radius: 4px;
-        font-size: 12px;
-        padding: 4px 0;
+        border-radius: 8px;
+        font-size: 27px;
+        padding: 9px 0;
         align-self: flex-start;
       }
       .s2-right {
@@ -331,20 +355,21 @@
       }
       .s2-card {
         background: #dc6154;
-        border-radius: 3px;
-        padding: 16px 16px 10px;
+        border-radius: 9px;
+        padding: 28px 28px 14px;
         height: 100%;
         color: #fff;
       }
       .s2-card h3 {
-        margin: 0 0 8px;
-        font-size: 33px;
-        line-height: 1.2;
+        margin: 0 0 10px;
+        font-size: 58px;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
       }
       .s2-card p {
-        margin: 0 0 12px;
-        font-size: 13px;
-        line-height: 1.45;
+        margin: 0 0 18px;
+        font-size: 39px;
+        line-height: 1.38;
       }
       .s2-card-media {
         width: 100%;
@@ -448,7 +473,9 @@
     <section id="section-2-learning-path" data-section="2-learning-path">
       <div class="s2-wrap">
         <div class="s2-title-row">
-          <img class="s2-title-icon" src="https://framerusercontent.com/images/ULjFgAHCO6j0yCOyNeaz8ZBytbM.gif?width=300&height=300" alt="路径图标" />
+          <div class="s2-title-icon-wrap">
+            <img class="s2-title-icon" src="https://framerusercontent.com/images/ULjFgAHCO6j0yCOyNeaz8ZBytbM.gif?width=300&height=300" alt="路径图标" />
+          </div>
           <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
         </div>
 
@@ -466,12 +493,12 @@
             <div id="s2LeftDesc2">在这里，我们教你如何自然地和 AI 协作，把想法落地。</div>
 
             <hr class="s2-divider" />
-            <div><strong>核心课程</strong></div>
+            <div class="s2-subhead"><strong>核心课程</strong></div>
             <div class="s2-pill" id="s2Core1">⟡ Claude Code · Gemini CLI · Codex CLI 101</div>
             <div class="s2-pill" id="s2Core2">◍ Cursor 101 - 制作 3 个 Web App</div>
 
             <hr class="s2-divider" />
-            <div><strong>进阶与选修</strong></div>
+            <div class="s2-subhead"><strong>进阶与选修</strong></div>
             <ul class="s2-list" id="s2AdvancedList">
               <li>入门向：AI 工具分类与选择</li>
               <li>Mac 新手必看：AI 编程环境搭建</li>
