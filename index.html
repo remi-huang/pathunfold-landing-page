@@ -2192,8 +2192,8 @@
           rot += 0.00145;
 
           const cx = arc.clientWidth / 2;
-          const cy = -220;
-          const r = Math.min(arc.clientWidth * 0.58, 980);
+          const cy = arc.clientHeight + 300;
+          const r = Math.min(arc.clientWidth * 0.348, 588);
           const step = (Math.PI * 2) / cards.length;
 
           cards.forEach((card, i) => {
