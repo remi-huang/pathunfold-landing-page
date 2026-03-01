@@ -224,48 +224,70 @@
       /* ===== SECTION 2: 课程学习路径 ===== */
       #section-2-learning-path {
         width: 100%;
-        padding: 20px 50px 44px;
+        padding: 0 100px 40px;
         background: #fdfdfa;
       }
       .s2-wrap {
-        width: 1218px;
+        width: 1200px;
         max-width: 100%;
         margin: 0 auto;
       }
       .s2-title-row {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        width: 100%;
         gap: 10px;
-        margin-bottom: 16px;
-        text-align: center;
+        width: 100%;
+        padding: 53px 0;
+        margin-bottom: 0;
       }
       .s2-title-icon-wrap {
-        width: auto;
-        height: auto;
+        width: 135px;
+        height: 135px;
         background: transparent;
         display: grid;
         place-items: center;
+        flex: none;
       }
       .s2-title-icon {
-        width: 116px;
-        height: 116px;
+        width: 135px;
+        height: 135px;
         object-fit: contain;
         filter: grayscale(1) contrast(1.06);
       }
+      .s2-title-box {
+        position: relative;
+        width: 556px;
+        height: 55px;
+        flex: none;
+      }
+      .s2-title-highlight {
+        position: absolute;
+        z-index: 0;
+        width: 233px;
+        height: 53px;
+        top: 1px;
+        left: 242px;
+        background: #ed9b2c;
+      }
       .s2-title {
+        position: absolute;
+        z-index: 1;
         margin: 0;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        height: 54px;
         font-family: "Utara Variable", Inter, sans-serif;
         font-size: 40px;
         font-weight: 1000;
         letter-spacing: -0.02em;
-        line-height: 1.08;
+        line-height: 1.35;
       }
       .s2-title mark {
-        background: #e9a63f;
-        padding: 0 12px 1px;
+        background: transparent;
+        padding: 0;
       }
       .s2-tabbar {
         border: 1px solid #b7b8b4;
@@ -407,6 +429,10 @@
         .hero-row { gap: 40px; }
 
         #section-2-learning-path { padding: 16px 20px 30px; }
+        .s2-title-row { padding: 24px 0; }
+        .s2-title-icon-wrap, .s2-title-icon { width: 96px; height: 96px; }
+        .s2-title-box { width: 470px; height: 50px; }
+        .s2-title-highlight { left: 205px; width: 210px; height: 46px; }
         .s2-title { font-size: 34px; }
       }
       @media (max-width: 900px) {
@@ -415,10 +441,15 @@
         .hero-kicker, .hero-title { font-size: 48px; white-space: normal; }
         .hero-desc { white-space: normal; }
 
+        .s2-title-row { flex-direction: column; align-items: flex-start; padding: 14px 0; }
+        .s2-title-icon-wrap, .s2-title-icon { width: 72px; height: 72px; }
+        .s2-title-box { width: auto; height: auto; }
+        .s2-title-highlight { position: absolute; left: 122px; top: 2px; width: 174px; height: 36px; }
+        .s2-title { position: relative; font-size: 28px; height: auto; line-height: 1.25; }
+
         .s2-tabbar { grid-template-columns: 1fr 1fr; }
         .s2-content { grid-template-columns: 1fr; }
         .s2-left { border-right: 0; border-bottom: 1px solid #b7b8b4; }
-        .s2-title { font-size: 28px; }
       }
     </style>
   </head>
@@ -496,7 +527,10 @@
           <div class="s2-title-icon-wrap">
             <img class="s2-title-icon" src="assets/icons/title-path.gif" alt="路径图标" />
           </div>
-          <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
+          <div class="s2-title-box" aria-label="找到属于你的 Vibe Coding 路径">
+            <div class="s2-title-highlight" aria-hidden="true"></div>
+            <h2 class="s2-title">找到属于你的 <mark>Vibe Coding</mark> 路径</h2>
+          </div>
         </div>
 
         <div class="s2-tabbar" id="s2Tabbar">
