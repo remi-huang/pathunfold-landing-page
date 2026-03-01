@@ -953,7 +953,7 @@
         '70岁退休教师','外科医生','全职妈妈','3D 艺术家','视觉特效师','工厂主','供应链经理','室内设计师','土木工程师','结构工程师','建筑师','灯光设计师','律师','移民律师','投资银行家','加密货币交易员','普通外科医生','肾脏科医生','职业治疗师','药剂师','视频创作者','播客主持人','本地化专家','大学教授','博士生','数字游民','斜杠青年','独立开发者','纺织品制造商','物流规划师','机械工程师','电气工程师','能源工程师','电商卖家','时尚品牌主理人','面包店主','便利店主','注册会计师','精算师','审计师','税务顾问','人力资源经理','招聘专员','行政助理','UI/UX 设计师','产品设计师','时装设计师','时尚博主','翻译官','高中教师','语言导师','教育科技创始人','硕士生','Gap Year 探索者'
       ];
 
-      const slotSpeed = 2000;
+      const slotSpeed = 1400;
       const itemHeight = 106;
       const slotScrollEls = [0,1,2].map(i => document.getElementById(`slotScroll${i}`));
       const slotLever = document.getElementById('slotLever');
@@ -999,13 +999,11 @@
           el.innerHTML = list.map(item => `<div class="slot-item">${item}</div>`).join('');
           const startY = -((list.length - 1) * itemHeight);
           el.style.transition = 'none';
-          el.style.filter = 'blur(0px)';
+          el.style.filter = 'none';
           el.style.transform = `translateY(${startY}px)`;
           void el.offsetHeight;
-          el.style.transition = `transform ${slotSpeed}ms cubic-bezier(0.1,0.45,0.1,1), filter ${slotSpeed}ms ease`;
-          el.style.filter = 'blur(2px)';
+          el.style.transition = `transform ${slotSpeed}ms cubic-bezier(0.1,0.45,0.1,1)`;
           el.style.transform = 'translateY(0px)';
-          setTimeout(() => { el.style.filter = 'blur(0px)'; }, slotSpeed * 0.85);
         });
 
         setTimeout(() => {
