@@ -434,8 +434,39 @@
       .s3-wrap {
         width: 1200px;
         max-width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 38px;
+        align-items: center;
+      }
+      .s3-copy {
+        min-height: 320px;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+      }
+      .s3-copy h3 {
+        margin: 0;
+        font-family: "Utara Variable", Inter, sans-serif;
+        font-size: 58px;
+        line-height: 1;
+        font-weight: 1000;
+        letter-spacing: -0.02em;
+      }
+      .s3-copy p {
+        margin: 0;
+        font-size: 44px;
+        line-height: 1.3;
+        font-weight: 500;
+      }
+      .s3-copy-text {
+        margin-top: 34px;
+        display: grid;
+        gap: 6px;
+      }
+      .s3-actions {
+        margin-top: auto;
+        display: flex;
+        gap: 28px;
       }
       .slot-machine {
         position: relative;
@@ -595,6 +626,9 @@
         .s2-title { font-size: 34px; }
 
         #section-3-meet-fellow { padding: 24px 20px 50px; }
+        .s3-wrap { grid-template-columns: 1fr; gap: 22px; }
+        .s3-copy h3 { font-size: 46px; }
+        .s3-copy p { font-size: 34px; }
         .slot-body { transform: scale(.9); transform-origin: center; }
       
       }
@@ -615,6 +649,10 @@
         .s2-left { border-right: 0; border-bottom: 1px solid #b7b8b4; }
 
         #section-3-meet-fellow { padding: 18px 14px 40px; }
+        .s3-copy h3 { font-size: 34px; }
+        .s3-copy p { font-size: 26px; }
+        .s3-copy-text { margin-top: 20px; }
+        .s3-actions { gap: 12px; flex-wrap: wrap; }
         .slot-machine { width: 100%; justify-content: center; }
         .slot-body { width: 100%; max-width: 650px; transform: none; }
         .slot-header { font-size: 26px; margin: 20px 0; }
@@ -751,6 +789,25 @@
     <!-- ========================= -->
     <section id="section-3-meet-fellow" data-section="3-meet-fellow">
       <div class="s3-wrap">
+        <div class="s3-copy">
+          <h3>90%的成员都是非技术背景</h3>
+          <div class="s3-copy-text">
+            <p>打破"只有程序员才能做产品"的偏见。</p>
+            <p>无论你是想要构建工具的行业专家，还是探索可能的生活黑客，</p>
+            <p>这里都有你的同类。</p>
+          </div>
+          <div class="s3-actions">
+            <div class="btn-wrap" style="width:220px;height:58px;">
+              <div class="btn-base" style="width:220px;height:48px;"></div>
+              <div class="btn-top" style="width:220px;height:48px;font-size:24px;">成为早期会员</div>
+            </div>
+            <div class="btn-wrap btn-ghost" style="width:220px;height:58px;">
+              <div class="btn-base" style="width:220px;height:48px;"></div>
+              <div class="btn-top" style="width:220px;height:48px;font-size:24px;">了解我们的故事</div>
+            </div>
+          </div>
+        </div>
+
         <div class="slot-machine" id="slotMachine">
           <div class="slot-body">
             <div class="slot-dot-row" id="slotDotRowTop"></div>
