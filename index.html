@@ -2188,7 +2188,7 @@
         const seed = [...track.querySelectorAll('.s9-card img')].map((img) => ({ src: img.src, alt: img.alt || '' }));
         if (!seed.length) return;
 
-        const total = 12;
+        const total = 18; // 增加到 1.5 倍卡片数量
         track.innerHTML = Array.from({ length: total }).map((_, i) => {
           const it = seed[i % seed.length];
           return `<article class="s9-card"><img src="${it.src}" alt="${it.alt || `showcase ${i+1}`}"/></article>`;
