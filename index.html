@@ -2208,7 +2208,7 @@
           if (!paused) rot += 0.00145;
 
           const cx = arc.clientWidth / 2;
-          const cy = arc.clientHeight + 180; // 上移圆心，展示更多圆圈顶部
+          const cy = arc.clientHeight * 0.62; // 把圆心上提，让圆弧最顶部进入可视区域
           const radiusScale = 1.44; // 在当前基础上再增加20%
           const r = Math.min(arc.clientWidth * 0.348, 588) * radiusScale;
           const step = (Math.PI * 2) / cards.length;
