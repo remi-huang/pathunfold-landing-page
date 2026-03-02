@@ -1245,6 +1245,78 @@
         display: block;
       }
 
+      /* ===== SECTION 10: WHY US ===== */
+      #section-10-why-us {
+        width: 100%;
+        padding: 84px 32px 72px;
+        background: #fdfdfa;
+      }
+      .s10-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 46px;
+        align-items: center;
+      }
+      .s10-collage { position: relative; min-height: 620px; }
+      .s10-main,
+      .s10-card {
+        position: absolute;
+        border: 1px solid #000;
+        background: #fff;
+        overflow: hidden;
+      }
+      .s10-main {
+        width: 86%;
+        max-width: 520px;
+        top: 36px;
+        left: 6%;
+        transform: rotate(-8deg);
+      }
+      .s10-card {
+        width: 74%;
+        max-width: 440px;
+        right: 0;
+        bottom: 42px;
+        transform: rotate(-2deg);
+      }
+      .s10-main img,
+      .s10-card img { width: 100%; display: block; }
+      .s10-deco {
+        position: absolute;
+        width: 210px;
+        opacity: .82;
+        pointer-events: none;
+      }
+      .s10-deco.left { left: -28px; bottom: 8px; }
+      .s10-deco.right { right: -16px; top: 0; transform: rotate(52deg); width: 170px; }
+      .s10-content h2 {
+        margin: 0 0 20px;
+        font-size: 56px;
+        line-height: 1;
+        font-weight: 1000;
+      }
+      .s10-content p {
+        margin: 0 0 16px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #222;
+      }
+      .s10-tags {
+        margin-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .s10-tags span {
+        border: 1px solid #000;
+        padding: 6px 10px;
+        font-size: 13px;
+        font-weight: 700;
+        background: #efefeb;
+      }
+
       @media (max-width: 1200px) {
         .s7-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -1267,6 +1339,12 @@
         .s9-title { font-size: 30px; }
         .s9-desc { font-size: 14px; }
         .s9-arc { height: 300px; margin-top: 0; margin-bottom: 30px; }
+
+        #section-10-why-us { padding: 56px 20px 48px; }
+        .s10-wrap { grid-template-columns: 1fr; gap: 30px; }
+        .s10-collage { min-height: 500px; }
+        .s10-content h2 { font-size: 40px; }
+        .s10-content p { font-size: 14px; }
       }
 
       @media (max-width: 900px) {
@@ -1680,6 +1758,32 @@
         <div class="s9-copy">
           <h2 class="s9-title">从「试验空间」到「用AI发电」独立社群</h2>
           <p class="s9-desc">在「一口新饭」社群里，我们开设了「用AI发电」空间。<br/>各行各业的普通人在这里学会用AI实现想法：<br/><span class="s9-em">内容创作者</span>用AI加速创作，<br/><span class="s9-em">一人企业创业者</span>搭建自动化运营系统，<br/><span class="s9-em">在校大学生</span>成功上架第一个AppStore应用，<br/>甚至<span class="s9-em">资深程序员</span>也转变心态成为独立开发者，开启自己的事业。<br/>每周的直播让每个人，包括行业专家都能收获 unknownunknowns，这才是跨界交流的魅力。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 10: WHY US -->
+    <!-- ========================= -->
+    <section id="section-10-why-us" data-section="10-why-us">
+      <div class="s10-wrap">
+        <div class="s10-collage">
+          <figure class="s10-main"><img src="assets/why-us/whyus-main.png" alt="why us main"/></figure>
+          <figure class="s10-card"><img src="assets/why-us/whyus-card.png" alt="why us card"/></figure>
+          <img class="s10-deco left" src="assets/why-us/deco-1.gif" alt=""/>
+          <img class="s10-deco right" src="assets/why-us/deco-2.gif" alt=""/>
+        </div>
+
+        <div class="s10-content">
+          <h2>WHY US？</h2>
+          <p>任何人都能售卖课程，但不是任何人都培养社群文化。从「一口新饭」成长而来，用AI发电天生具备国际化基因：成员来自全球各地，硅谷资深工程师、多年独立开发者、国际知名 YouTuber，遍布北美、欧洲和亚洲。</p>
+          <p>我们坚信：技术不应该是实现想法的门槛。这里不是纯粹获取信息的地方，而是一个 AI 赋能的催化器——聚人、聚智、聚资源。你将与来自全球不同背景的创作者建立深度链接，这种独特的社群连接带来的长期价值，远超任何单一课程。</p>
+          <div class="s10-tags">
+            <span>TAIWAN</span>
+            <span>HONGKONG</span>
+            <span>BEIJING</span>
+            <span>SHENZHEN</span>
+          </div>
         </div>
       </div>
     </section>
