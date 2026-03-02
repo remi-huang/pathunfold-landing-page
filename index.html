@@ -1324,16 +1324,17 @@
         padding: 84px 32px 70px;
         background: #fdfdfa;
       }
-      .s11-wrap { max-width: 1280px; margin: 0 auto; }
-      .s11-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        margin-bottom: 26px;
+      .s11-wrap {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 420px 1fr;
+        gap: 34px;
+        align-items: start;
       }
+      .s11-left { padding-top: 10px; }
       .s11-title {
-        margin: 0;
+        margin: 0 0 22px;
         font-size: 52px;
         line-height: 1.2;
         font-weight: 1000;
@@ -1350,52 +1351,43 @@
         font-weight: 700;
         box-shadow: 0 6px 0 #c6841d;
       }
-      .s11-road {
+      .s11-screen {
         border: 1px solid #000;
-        background: #efefeb;
         border-radius: 10px;
-        padding: 28px 18px;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 0;
+        background: #efefeb;
+        padding: 14px;
+      }
+      .s11-screen-inner {
+        border: 1px solid #000;
+        border-radius: 8px;
+        background: #fdfdfa;
+        overflow: hidden;
       }
       .s11-step {
-        position: relative;
-        min-height: 146px;
-        display: flex;
-        flex-direction: column;
+        min-height: 84px;
+        display: grid;
+        grid-template-columns: 64px 1fr;
         align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 8px 8px;
+        padding: 0 18px;
+        border-bottom: 1px solid #d3d5cf;
       }
-      .s11-step:not(:last-child)::after {
-        content: "";
-        position: absolute;
-        right: -1px;
-        top: 50%;
-        width: 2px;
-        height: 70px;
-        transform: translateY(-50%);
-        background: #d7d8d2;
-      }
+      .s11-step:last-child { border-bottom: 0; }
       .s11-step .n {
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         border-radius: 999px;
         border: 1px solid #000;
-        background: #fff;
-        color: #111;
+        background: #111;
+        color: #fff;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 1000;
-        margin-bottom: 12px;
       }
-      .s11-step.dark .n {
-        background: #111;
-        color: #fff;
+      .s11-step:first-child .n {
+        background: #fff;
+        color: #111;
       }
       .s11-step p {
         margin: 0;
@@ -1434,17 +1426,15 @@
         .s10-content p { font-size: 14px; }
 
         #section-11-journey { padding: 56px 20px 50px; }
-        .s11-head { flex-direction: column; align-items: flex-start; }
+        .s11-wrap { grid-template-columns: 1fr; gap: 22px; }
         .s11-title { font-size: 36px; }
         .s11-title .num { font-size: 60px; }
-        .s11-road { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .s11-step { border: 1px solid #d7d8d2; border-radius: 10px; background: #f8f8f5; }
-        .s11-step:not(:last-child)::after { display: none; }
       }
 
       @media (max-width: 900px) {
         .header { padding: 10px 16px; }
-        .s11-road { grid-template-columns: repeat(2, 1fr); }
+        .s11-step { grid-template-columns: 52px 1fr; min-height: 74px; padding: 0 12px; }
+        .s11-step .n { width: 34px; height: 34px; font-size: 16px; }
         .s11-step p { font-size: 17px; }
         .hero-row { flex-direction: column; }
         .hero-kicker, .hero-title { font-size: 48px; white-space: normal; }
@@ -1890,18 +1880,20 @@
     <!-- ========================= -->
     <section id="section-11-journey" data-section="11-journey">
       <div class="s11-wrap">
-        <div class="s11-head">
+        <div class="s11-left">
           <h2 class="s11-title"><span class="num">6</span>步开启AI新旅程</h2>
           <button class="s11-cta">成为早期会员</button>
         </div>
 
-        <div class="s11-road">
-          <article class="s11-step"><span class="n">1</span><p>注册加入</p></article>
-          <article class="s11-step dark"><span class="n">2</span><p>探索课程</p></article>
-          <article class="s11-step dark"><span class="n">3</span><p>参与直播</p></article>
-          <article class="s11-step dark"><span class="n">4</span><p>动手实践</p></article>
-          <article class="s11-step dark"><span class="n">5</span><p>讨论交流</p></article>
-          <article class="s11-step dark"><span class="n">6</span><p>实践成长</p></article>
+        <div class="s11-screen">
+          <div class="s11-screen-inner">
+            <article class="s11-step"><span class="n">1</span><p>注册加入</p></article>
+            <article class="s11-step"><span class="n">2</span><p>探索课程</p></article>
+            <article class="s11-step"><span class="n">3</span><p>参与直播</p></article>
+            <article class="s11-step"><span class="n">4</span><p>动手实践</p></article>
+            <article class="s11-step"><span class="n">5</span><p>讨论交流</p></article>
+            <article class="s11-step"><span class="n">6</span><p>实践成长</p></article>
+          </div>
         </div>
       </div>
     </section>
