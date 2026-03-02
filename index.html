@@ -1188,6 +1188,9 @@
         background: #fdfdfa;
       }
       .s9-wrap { width: 100%; max-width: 1700px; margin: 0 auto; }
+      .s9-copy {
+        margin-top: 8px;
+      }
       .s9-title {
         margin: 0;
         text-align: center;
@@ -1251,6 +1254,7 @@
         .s8-collab-actions { justify-content: flex-start; }
 
         #section-9-showcase { padding: 56px 20px 52px; }
+        .s9-copy { margin-top: 2px; }
         .s9-title { font-size: 30px; }
         .s9-desc { font-size: 12px; }
         .s9-arc { height: 300px; margin-top: 0; margin-bottom: 30px; }
@@ -1664,8 +1668,10 @@
           </div>
         </div>
 
-        <h2 class="s9-title">从「试验空间」到「用AI发电」独立社群</h2>
-        <p class="s9-desc">在「一口新饭」社群里，我们开设了「用A发电」空间。<br/>各行各业的普通人在这里学会用AI实现想法: 内容创作者用AI加速创作，一人企业创业者搭建自动化运营系统，在校大学生成功上架第一个AppStore应用，甚至资深程序员也转变心态成为独立开发者开启自己的事业....<br/>每周的直播让每个人，包括行业专家都能收获 unknownunknowns，这才是跨界交流的魅力。</p>
+        <div class="s9-copy">
+          <h2 class="s9-title">从「试验空间」到「用AI发电」独立社群</h2>
+          <p class="s9-desc">在「一口新饭」社群里，我们开设了「用AI发电」空间。<br/>各行各业的普通人在这里学会用AI实现想法: 内容创作者用AI加速创作，一人企业创业者搭建自动化运营系统，在校大学生成功上架第一个AppStore应用，甚至资深程序员也转变心态成为独立开发者开启自己的事业....<br/>每周的直播让每个人，包括行业专家都能收获 unknownunknowns，这才是跨界交流的魅力。</p>
+        </div>
       </div>
     </section>
 
@@ -2194,7 +2200,8 @@
 
           const cx = arc.clientWidth / 2;
           const cy = arc.clientHeight + 300;
-          const r = Math.min(arc.clientWidth * 0.348 * 1.2, 588 * 1.2);
+          const radiusScale = 1.2; // 半径 +20%
+          const r = Math.min(arc.clientWidth * 0.348, 588) * radiusScale;
           const step = (Math.PI * 2) / cards.length;
 
           cards.forEach((card, i) => {
