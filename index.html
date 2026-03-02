@@ -1212,7 +1212,6 @@
         position: relative;
         height: 410px;
         overflow: hidden;
-        clip-path: inset(0 0 60% 0); /* 仅显示顶部40% */
         perspective: 1200px;
       }
       .s9-track {
@@ -2208,9 +2207,11 @@
           if (!paused) rot += 0.00145;
 
           const cx = arc.clientWidth / 2;
-          const cy = arc.clientHeight * 0.62; // 把圆心上提，让圆弧最顶部进入可视区域
           const radiusScale = 1.44; // 在当前基础上再增加20%
           const r = Math.min(arc.clientWidth * 0.348, 588) * radiusScale;
+          const visibleHeight = r * 0.8; // 仅显示圆圈高度的顶部40%
+          arc.style.height = `${visibleHeight}px`;
+          const cy = r; // 顶部与可视窗口顶部对齐
           const step = (Math.PI * 2) / cards.length;
 
           cards.forEach((card, i) => {
