@@ -2212,7 +2212,8 @@
           const cardHalfH = 100; // 卡片高度200的一半
           const topBleedFix = 8; // 额外留白，避免顶部仍有1-2px裁切
           const visibleHeight = r * 0.8 + cardHalfH + topBleedFix; // 圆顶部40% + 顶部卡片半高 + 顶部补偿
-          arc.style.height = `${visibleHeight}px`;
+          const viewportScale = 0.7; // 可视窗口缩小到当前的70%
+          arc.style.height = `${visibleHeight * viewportScale}px`;
           const cy = r + cardHalfH + topBleedFix; // 保证最顶部卡片完全可见
           const step = (Math.PI * 2) / cards.length;
 
