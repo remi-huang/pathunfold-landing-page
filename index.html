@@ -2206,7 +2206,7 @@
         });
 
         function frame() {
-          if (!paused) rot += 0.00145;
+          if (!paused) rot += 0.00116; // 速度减缓20%
 
           const cx = arc.clientWidth / 2;
           const radiusScale = 1.44; // 在当前基础上再增加20%
