@@ -2209,9 +2209,10 @@
           const cx = arc.clientWidth / 2;
           const radiusScale = 1.44; // 在当前基础上再增加20%
           const r = Math.min(arc.clientWidth * 0.348, 588) * radiusScale;
-          const visibleHeight = r * 0.8; // 仅显示圆圈高度的顶部40%
+          const cardHalfH = 100; // 卡片高度200的一半
+          const visibleHeight = r * 0.8 + cardHalfH; // 圆顶部40% + 顶部卡片半高
           arc.style.height = `${visibleHeight}px`;
-          const cy = r; // 顶部与可视窗口顶部对齐
+          const cy = r + cardHalfH; // 保证最顶部卡片不会被窗口上沿截掉
           const step = (Math.PI * 2) / cards.length;
 
           cards.forEach((card, i) => {
