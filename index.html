@@ -1388,11 +1388,13 @@
       }
       .s11-step {
         min-height: 50px;
-        width: 320px;
+        width: max-content;
         max-width: calc(100% - 48px);
         margin: 0 auto;
         display: grid;
-        grid-template-columns: 72px 1fr;
+        grid-template-columns: 52px auto;
+        column-gap: 20px;
+        justify-content: center;
         align-items: center;
         padding: 0;
       }
@@ -1462,7 +1464,7 @@
         .s11-title .num { font-size: 60px; }
         .s11-cta { width: 120px; height: 40px; font-size: 12px; }
         .s11-screen-inner { min-height: 430px; align-items: center; }
-        .s11-step { width: 320px; max-width: calc(100% - 36px); padding: 0; grid-template-columns: 56px 1fr; }
+        .s11-step { width: max-content; max-width: calc(100% - 36px); padding: 0; grid-template-columns: 38px auto; column-gap: 18px; }
         .s11-step .n { width: 38px; height: 38px; font-size: 16px; border-width: 1px; }
         .s11-step p { font-size: 18px; line-height: 1.5; }
       }
@@ -1472,7 +1474,7 @@
         .s11-screen-bar { height: 44px; padding: 0 14px; }
         .s11-dot { width: 14px; height: 14px; border-width: 1px; }
         .s11-screen-inner { min-height: 320px; gap: 16px; align-items: center; }
-        .s11-step { width: 250px; max-width: calc(100% - 24px); grid-template-columns: 40px 1fr; min-height: 42px; padding: 0; }
+        .s11-step { width: max-content; max-width: calc(100% - 24px); grid-template-columns: 28px auto; column-gap: 12px; min-height: 42px; padding: 0; }
         .s11-step .n { width: 28px; height: 28px; font-size: 14px; border-width: 1px; }
         .s11-step p { font-size: 16px; line-height: 1.45; }
         .hero-row { flex-direction: column; }
