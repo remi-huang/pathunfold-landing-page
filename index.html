@@ -1406,6 +1406,11 @@
         align-items: center;
         padding: 0;
       }
+      @property --s11-ring {
+        syntax: '<angle>';
+        inherits: false;
+        initial-value: 0deg;
+      }
       .s11-step .n {
         width: 34px;
         height: 34px;
@@ -1419,9 +1424,21 @@
         font-size: 20px;
         font-weight: 1000;
         line-height: 1;
-      }
-      .s11-step .n {
+        position: relative;
+        overflow: hidden;
         transition: background-color .46s ease, border-color .46s ease, color .46s ease, transform .34s ease;
+      }
+      .s11-step .n::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: 999px;
+        --s11-ring: 0deg;
+        background: conic-gradient(from -90deg, #fff var(--s11-ring), transparent 0deg);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+        opacity: 0;
+        pointer-events: none;
       }
       .s11-step .n.is-pending {
         background: #000;
@@ -1433,11 +1450,24 @@
         color: #111;
         border-color: #9ea0a0;
       }
+      .s11-step .n.is-tracing {
+        background: #efefeb;
+        color: #111;
+        border-color: #9ea0a0;
+      }
+      .s11-step .n.is-tracing::after {
+        opacity: 1;
+        animation: s11-ring-draw .86s linear forwards;
+      }
       .s11-step .n.is-done {
         background: #df9f43;
         color: #fff;
         border-color: #df9f43;
         transform: scale(1.03);
+      }
+      @keyframes s11-ring-draw {
+        from { --s11-ring: 0deg; }
+        to { --s11-ring: 360deg; }
       }
       .s11-step p {
         margin: 0;
@@ -2533,7 +2563,7 @@
         });
 
         function setState(node, state) {
-          node.classList.remove('is-pending', 'is-idle', 'is-done');
+          node.classList.remove('is-pending', 'is-idle', 'is-tracing', 'is-done');
           node.classList.add(state);
           if (state === 'is-done') node.textContent = '✓';
           else node.textContent = node.dataset.num || '';
@@ -2558,11 +2588,14 @@
 
           for (let i = 0; i < nodes.length; i++) {
             const cur = nodes[i];
-            await sleep(760);
+            await sleep(420);
+            setState(cur, 'is-tracing');
+            await sleep(900);
             setState(cur, 'is-done');
+
             const next = nodes[i + 1];
             if (next) {
-              await sleep(360);
+              await sleep(260);
               setState(next, 'is-idle');
             }
           }
