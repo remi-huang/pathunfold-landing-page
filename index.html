@@ -1413,7 +1413,7 @@
         line-height: 1;
       }
       .s11-step .n {
-        transition: background-color .28s ease, border-color .28s ease, color .28s ease, transform .22s ease;
+        transition: background-color .46s ease, border-color .46s ease, color .46s ease, transform .34s ease;
       }
       .s11-step .n.is-pending {
         background: #000;
@@ -2549,11 +2549,11 @@
 
           for (let i = 0; i < nodes.length; i++) {
             const cur = nodes[i];
-            await sleep(340);
+            await sleep(760);
             setState(cur, 'is-done');
             const next = nodes[i + 1];
             if (next) {
-              await sleep(180);
+              await sleep(360);
               setState(next, 'is-idle');
             }
           }
