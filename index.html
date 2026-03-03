@@ -1476,6 +1476,81 @@
         font-weight: 400;
       }
 
+      /* ===== SECTION 12: 社群成员分享 ===== */
+      #section-12-testimonials {
+        width: 100%;
+        padding: 86px 32px 72px;
+        background: #fdfdfa;
+      }
+      .s12-wrap { max-width: 1460px; margin: 0 auto; }
+      .s12-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 44px;
+      }
+      .s12-copy h2 {
+        margin: 0 0 12px;
+        font-size: 48px;
+        line-height: 1.2;
+        font-weight: 900;
+      }
+      .s12-copy p {
+        margin: 0;
+        color: #777;
+        font-size: 16px;
+        line-height: 1.4;
+        font-weight: 500;
+      }
+      .s12-cta {
+        border: 1px solid #b37919;
+        background: #ed9b2c;
+        color: #111;
+        border-radius: 10px;
+        width: 120px;
+        height: 40px;
+        font-size: 12px;
+        font-weight: 700;
+        box-shadow: 0 6px 0 #c6841d;
+        flex: 0 0 auto;
+      }
+      .s12-list { display: flex; flex-direction: column; gap: 24px; }
+      .s12-item {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        align-items: flex-start;
+        column-gap: 18px;
+      }
+      .s12-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding-top: 2px;
+      }
+      .s12-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        object-fit: cover;
+      }
+      .s12-name {
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 500;
+        color: #111;
+      }
+      .s12-quote {
+        margin: 0;
+        border: 1px solid #9b9b9b;
+        border-radius: 8px;
+        padding: 24px;
+        color: #777;
+        font-size: 16px;
+        line-height: 1.6;
+        font-weight: 500;
+      }
+
       @media (max-width: 1200px) {
         .s7-grid { grid-template-columns: repeat(2, 1fr); }
       }
@@ -1516,6 +1591,13 @@
         .s11-step { width: max-content; max-width: calc(100% - 36px); padding: 0; grid-template-columns: 30px auto; column-gap: 16px; }
         .s11-step .n { width: 30px; height: 30px; font-size: 16px; border-width: 1px; }
         .s11-step p { font-size: 18px; line-height: 1.5; }
+
+        #section-12-testimonials { padding: 56px 20px 50px; }
+        .s12-head { align-items: flex-start; margin-bottom: 28px; }
+        .s12-copy h2 { font-size: 36px; }
+        .s12-copy p { font-size: 14px; }
+        .s12-item { grid-template-columns: 110px 1fr; }
+        .s12-quote { padding: 18px; font-size: 15px; }
       }
 
       @media (max-width: 900px) {
@@ -1526,6 +1608,14 @@
         .s11-step { width: max-content; max-width: calc(100% - 24px); grid-template-columns: 22px auto; column-gap: 10px; min-height: 42px; padding: 0; }
         .s11-step .n { width: 22px; height: 22px; font-size: 12px; border-width: 1px; }
         .s11-step p { font-size: 16px; line-height: 1.45; }
+
+        .s12-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+        .s12-copy h2 { font-size: 32px; }
+        .s12-item { grid-template-columns: 1fr; row-gap: 10px; }
+        .s12-author { padding-top: 0; }
+        .s12-avatar { width: 38px; height: 38px; }
+        .s12-quote { padding: 14px; font-size: 14px; }
+
         .hero-row { flex-direction: column; }
         .hero-kicker, .hero-title { font-size: 48px; white-space: normal; }
         .hero-desc { white-space: normal; }
@@ -1989,6 +2079,55 @@
             <article class="s11-step"><span class="n">5</span><p>讨论交流</p></article>
             <article class="s11-step"><span class="n">6</span><p>实践成长</p></article>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- SECTION 12: 社群成员分享 -->
+    <!-- ========================= -->
+    <section id="section-12-testimonials" data-section="12-testimonials">
+      <div class="s12-wrap">
+        <div class="s12-head">
+          <div class="s12-copy">
+            <h2>社群成员分享</h2>
+            <p>我们为零基础的普通人提供学习AI路上的所需的资源，见证每一个人的探索和成长。</p>
+          </div>
+          <button class="s12-cta">加入我们</button>
+        </div>
+
+        <div class="s12-list">
+          <article class="s12-item">
+            <div class="s12-author">
+              <img class="s12-avatar" src="assets/testimonials/arlene.png" alt="Arlene" />
+              <span class="s12-name">Arlene</span>
+            </div>
+            <p class="s12-quote">看到大家的各种提升效率或者是给自己做一个“趁手”的工具的方法，总是非常受到启发。我最近也打算尝试AI做动画了（前几年我还想过要学动画软件或者什么3D软件，一直学不起来因为对我来说实在太难了，而自己的需求又没有那么高所以一直拖延），最近我看到了学会做动画的希望！</p>
+          </article>
+
+          <article class="s12-item">
+            <div class="s12-author">
+              <img class="s12-avatar" src="assets/testimonials/byron.png" alt="Byron" />
+              <span class="s12-name">Byron</span>
+            </div>
+            <p class="s12-quote">Vibe Coding 真的是降低了我们这些非技术背景者的入门门槛 🙌。只要有想法、有耐心、愿意尝试，我相信每个人都能做出属于自己的作品。一起加油，共勉！💪✨</p>
+          </article>
+
+          <article class="s12-item">
+            <div class="s12-author">
+              <img class="s12-avatar" src="assets/testimonials/cara.png" alt="Cara" />
+              <span class="s12-name">Cara</span>
+            </div>
+            <p class="s12-quote">終於把「GitHub 101 從入門到精通」的課程都看完了XD Ray老師教了幾種方式，包含最一開始使用 GitHub Desktop 同步至 GitHub 做版本控管、接著是使用 ChatGPT 產生程式碼後部署至 GitHub 雲端空間，再發布至網站上變成網頁小遊戲，一直到現在這個作業，則是使用 VS Code 編輯完專案內容，就可以直接利用 GitHub 做版本控管及同步至 GitHub 雲端空間。感覺整個工作流程都完整了，謝謝 Ray 老師的教學。😊😊😊</p>
+          </article>
+
+          <article class="s12-item">
+            <div class="s12-author">
+              <img class="s12-avatar" src="assets/testimonials/chengxi.png" alt="Chengxi" />
+              <span class="s12-name">Chengxi</span>
+            </div>
+            <p class="s12-quote">加入 用 AI 发电社区后，看到有很多和我一样的小白一步步上手、逐渐能做出自己的作品，非常有鼓励性 ✨……我的心得是：先实践，积累基础经验，再去看教程 📚。这样能将知识联通，而不是照搬步骤，学到的才是原理，而不是表皮操作。</p>
+          </article>
         </div>
       </div>
     </section>
