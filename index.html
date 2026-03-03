@@ -1325,11 +1325,11 @@
         background: #fdfdfa;
       }
       .s11-wrap {
-        max-width: 1360px;
+        max-width: 1280px;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: 1fr 740px;
-        gap: 56px;
+        grid-template-columns: 1fr 620px;
+        gap: 52px;
         align-items: center;
       }
       .s11-left { padding-left: 10px; }
@@ -1356,16 +1356,16 @@
       .s11-screen {
         border: 1px solid #3a3a3a;
         border-radius: 10px;
-        background: #efefeb;
+        background: transparent;
         overflow: hidden;
       }
       .s11-screen-bar {
-        height: 60px;
+        height: 52px;
         border-bottom: 1px solid #3a3a3a;
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 0 20px;
+        padding: 0 18px;
         background: #efefeb;
       }
       .s11-dot {
@@ -1377,20 +1377,23 @@
       }
       .s11-dot.active { background: #df9f43; }
       .s11-screen-inner {
-        background: #efefeb;
-        min-height: 640px;
+        background: transparent;
+        min-height: 500px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 24px;
-        padding: 34px 0;
+        align-items: center;
+        gap: 20px;
+        padding: 28px 0;
       }
       .s11-step {
-        min-height: 54px;
+        min-height: 50px;
+        width: 360px;
+        max-width: calc(100% - 48px);
         display: grid;
-        grid-template-columns: 86px 1fr;
+        grid-template-columns: 72px 1fr;
         align-items: center;
-        padding: 0 120px;
+        padding: 0;
       }
       .s11-step .n {
         width: 52px;
@@ -1457,8 +1460,8 @@
         .s11-title { font-size: 36px; }
         .s11-title .num { font-size: 60px; }
         .s11-cta { width: 120px; height: 40px; font-size: 12px; }
-        .s11-screen-inner { min-height: 430px; }
-        .s11-step { padding: 0 40px; grid-template-columns: 56px 1fr; }
+        .s11-screen-inner { min-height: 430px; align-items: center; }
+        .s11-step { width: 320px; max-width: calc(100% - 36px); padding: 0; grid-template-columns: 56px 1fr; }
         .s11-step .n { width: 38px; height: 38px; font-size: 16px; border-width: 1px; }
         .s11-step p { font-size: 18px; line-height: 1.5; }
       }
@@ -1467,8 +1470,8 @@
         .header { padding: 10px 16px; }
         .s11-screen-bar { height: 44px; padding: 0 14px; }
         .s11-dot { width: 14px; height: 14px; border-width: 1px; }
-        .s11-screen-inner { min-height: 320px; gap: 16px; }
-        .s11-step { grid-template-columns: 40px 1fr; min-height: 42px; padding: 0 18px; }
+        .s11-screen-inner { min-height: 320px; gap: 16px; align-items: center; }
+        .s11-step { width: 250px; max-width: calc(100% - 24px); grid-template-columns: 40px 1fr; min-height: 42px; padding: 0; }
         .s11-step .n { width: 28px; height: 28px; font-size: 14px; border-width: 1px; }
         .s11-step p { font-size: 16px; line-height: 1.45; }
         .hero-row { flex-direction: column; }
