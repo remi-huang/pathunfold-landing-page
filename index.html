@@ -1412,14 +1412,24 @@
         font-weight: 1000;
         line-height: 1;
       }
-      .s11-step:nth-child(1) .n {
+      .s11-step .n {
+        transition: background-color .28s ease, border-color .28s ease, color .28s ease, transform .22s ease;
+      }
+      .s11-step .n.is-pending {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+      }
+      .s11-step .n.is-idle {
         background: #efefeb;
         color: #111;
         border-color: #9ea0a0;
       }
-      .s11-step:nth-child(2) .n {
+      .s11-step .n.is-done {
         background: #df9f43;
+        color: #fff;
         border-color: #df9f43;
+        transform: scale(1.03);
       }
       .s11-step p {
         margin: 0;
@@ -2502,11 +2512,73 @@
         requestAnimationFrame(frame);
       }
 
+      function initS11JourneyAnimation() {
+        const section = document.getElementById('section-11-journey');
+        if (!section) return;
+
+        const nodes = Array.from(section.querySelectorAll('.s11-step .n'));
+        if (!nodes.length) return;
+
+        nodes.forEach((node, i) => {
+          node.dataset.num = String(i + 1);
+        });
+
+        function setState(node, state) {
+          node.classList.remove('is-pending', 'is-idle', 'is-done');
+          node.classList.add(state);
+          if (state === 'is-done') node.textContent = '✓';
+          else node.textContent = node.dataset.num || '';
+        }
+
+        function reset() {
+          nodes.forEach((node) => setState(node, 'is-pending'));
+          if (nodes[0]) setState(nodes[0], 'is-idle');
+        }
+
+        function sleep(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        let running = false;
+        let played = false;
+
+        async function play() {
+          if (running || played) return;
+          running = true;
+          reset();
+
+          for (let i = 0; i < nodes.length; i++) {
+            const cur = nodes[i];
+            await sleep(340);
+            setState(cur, 'is-done');
+            const next = nodes[i + 1];
+            if (next) {
+              await sleep(180);
+              setState(next, 'is-idle');
+            }
+          }
+
+          played = true;
+          running = false;
+        }
+
+        reset();
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > 0.45) play();
+          });
+        }, { threshold: [0.45, 0.6] });
+
+        observer.observe(section);
+      }
+
       renderMap();
       renderPie();
       renderTicker();
       renderS7();
       initS9Arc();
+      initS11JourneyAnimation();
     </script>
   </body>
 </html>
