@@ -1332,7 +1332,14 @@
         gap: 52px;
         align-items: center;
       }
-      .s11-left { padding-left: 10px; }
+      .s11-left {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transform: translateX(-20px);
+      }
       .s11-title {
         margin: 0 0 30px;
         font-size: 44px;
@@ -1358,6 +1365,7 @@
         border-radius: 10px;
         background: transparent;
         overflow: hidden;
+        transform: translateX(-20px);
       }
       .s11-screen-bar {
         height: 52px;
@@ -1469,7 +1477,8 @@
 
         #section-11-journey { padding: 56px 20px 50px; }
         .s11-wrap { grid-template-columns: 1fr; gap: 24px; }
-        .s11-left { padding-left: 0; }
+        .s11-left { padding-left: 0; transform: none; }
+        .s11-screen { transform: none; }
         .s11-title { font-size: 36px; }
         .s11-title .num { font-size: 60px; }
         .s11-cta { width: 120px; height: 40px; font-size: 12px; }
