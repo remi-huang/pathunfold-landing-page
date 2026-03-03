@@ -1342,7 +1342,7 @@
       }
       .s11-title {
         margin: 0 0 30px;
-        font-size: 44px;
+        font-size: 40px;
         line-height: 1.45;
         font-weight: 1000;
         letter-spacing: 0;
@@ -2811,9 +2811,9 @@
 
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting && entry.intersectionRatio > 0.45) play();
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.72) play();
           });
-        }, { threshold: [0.45, 0.6] });
+        }, { threshold: [0.72, 0.85] });
 
         observer.observe(section);
       }
