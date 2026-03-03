@@ -1415,7 +1415,7 @@
         width: 34px;
         height: 34px;
         border-radius: 999px;
-        border: 1px solid #000;
+        border: 1px solid transparent;
         background: #000;
         color: #fff;
         display: inline-flex;
@@ -1443,17 +1443,17 @@
       .s11-step .n.is-pending {
         background: #000;
         color: #fff;
-        border-color: #000;
+        border-color: transparent;
       }
       .s11-step .n.is-idle {
-        background: #efefeb;
-        color: #111;
-        border-color: #9ea0a0;
+        background: #000;
+        color: #fff;
+        border-color: transparent;
       }
       .s11-step .n.is-tracing {
-        background: #efefeb;
-        color: #111;
-        border-color: #9ea0a0;
+        background: #000;
+        color: #fff;
+        border-color: transparent;
       }
       .s11-step .n.is-tracing::after {
         opacity: 1;
@@ -1462,7 +1462,7 @@
       .s11-step .n.is-done {
         background: #df9f43;
         color: #fff;
-        border-color: #df9f43;
+        border-color: transparent;
         transform: scale(1.03);
       }
       @keyframes s11-ring-draw {
@@ -2571,7 +2571,6 @@
 
         function reset() {
           nodes.forEach((node) => setState(node, 'is-pending'));
-          if (nodes[0]) setState(nodes[0], 'is-idle');
         }
 
         function sleep(ms) {
@@ -2592,12 +2591,6 @@
             setState(cur, 'is-tracing');
             await sleep(900);
             setState(cur, 'is-done');
-
-            const next = nodes[i + 1];
-            if (next) {
-              await sleep(260);
-              setState(next, 'is-idle');
-            }
           }
 
           played = true;
